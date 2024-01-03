@@ -1970,11 +1970,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj",
+      "projectUniqueName": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj",
       "projectName": "GameMasterEnterprise.Data",
-      "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj",
+      "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj",
       "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-      "outputPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Data\\obj\\",
+      "outputPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1991,8 +1991,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj": {
-              "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj"
+            "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj": {
+              "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj"
             }
           }
         }

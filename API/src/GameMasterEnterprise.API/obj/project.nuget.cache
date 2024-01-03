@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cxLa2xCFgcAF0WxNFpSY8hOco0/pU/kqo4snyq3bThYEID8FL8Q+79mgAFyecV59T2FVg4MP/7hqrmIDOREpbA==",
+  "dgSpecHash": "OyVwv7RSTD68ioJRWFbc9LNBKLJ6EjOO29hbCf6wiWHzsDkfcHHWSv97RnUaOAHQLjp0J2N/bJfMRKFIzg3/fg==",
   "success": true,
-  "projectFilePath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
+  "projectFilePath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eduardo\\.nuget\\packages\\aspnetcore.healthchecks.sqlserver\\6.0.2\\aspnetcore.healthchecks.sqlserver.6.0.2.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\aspnetcore.healthchecks.ui\\6.0.4\\aspnetcore.healthchecks.ui.6.0.4.nupkg.sha512",

@@ -16,10 +16,11 @@ services:
   db:
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: slimgame
+      MYSQL_ROOT_PASSWORD: Isaacroque0209@
       MYSQL_DATABASE: GameMasterEnterprise
     ports:
-      - "3310:3306"
+      - "3306:3306"
     volumes:
       - db-data:/var/lib/mysql
 

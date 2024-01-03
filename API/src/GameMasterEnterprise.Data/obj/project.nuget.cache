@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6AnqWuwjhHej7J5EhZl1XlMA9GVJdHA4TWjt0t6+cx/Vjlb9pL2ABSEhOd/vzgVmzkL9ZG1yKvaocEc3MS568w==",
+  "dgSpecHash": "vp/eq7R3NtEmDJNAPaTFffUjCSIYKVcUvfWxNY3riWKzYIjU7S6qkAAwZLoCSqwtCK8xZmHqKPx7aIms3WfHIg==",
   "success": true,
-  "projectFilePath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj",
+  "projectFilePath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Eduardo\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
