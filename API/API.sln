@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Aplication", "1 - Aplication", "{F703CF67-257D-4ABD-B8A8-89CDC9EDA0F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Service", "2 - Service", "{DC74F351-6759-4E42-B689-CAECBF127BDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{32CAA2F2-AE2B-4496-A521-1C2264E456EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{C06F9C1C-7A44-4168-9154-E13E318DDAD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 -Data", "4.1 -Data", "{0E43E3E0-7CD8-49F2-97EC-9F704FEC2810}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMasterEnterprise.API", "src\GameMasterEnterprise.API\GameMasterEnterprise.API.csproj", "{C0B30653-1486-4E62-9EC7-95DFDB75F081}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMasterEnterprise.Service", "src\GameMasterEnterprise.Service\GameMasterEnterprise.Service.csproj", "{10866760-B2E1-4716-B6AD-1AE75C87E75C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMasterEnterprise.Domain", "src\GameMasterEnterprise.Domain\GameMasterEnterprise.Domain.csproj", "{28D130BB-B77C-43A4-B45A-5BB9C60EE14E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMasterEnterprise.Data", "src\GameMasterEnterprise.Data\GameMasterEnterprise.Data.csproj", "{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0B30653-1486-4E62-9EC7-95DFDB75F081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0B30653-1486-4E62-9EC7-95DFDB75F081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0B30653-1486-4E62-9EC7-95DFDB75F081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0B30653-1486-4E62-9EC7-95DFDB75F081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10866760-B2E1-4716-B6AD-1AE75C87E75C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10866760-B2E1-4716-B6AD-1AE75C87E75C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10866760-B2E1-4716-B6AD-1AE75C87E75C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10866760-B2E1-4716-B6AD-1AE75C87E75C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D130BB-B77C-43A4-B45A-5BB9C60EE14E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D130BB-B77C-43A4-B45A-5BB9C60EE14E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D130BB-B77C-43A4-B45A-5BB9C60EE14E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D130BB-B77C-43A4-B45A-5BB9C60EE14E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E43E3E0-7CD8-49F2-97EC-9F704FEC2810} = {C06F9C1C-7A44-4168-9154-E13E318DDAD4}
+		{C0B30653-1486-4E62-9EC7-95DFDB75F081} = {F703CF67-257D-4ABD-B8A8-89CDC9EDA0F9}
+		{10866760-B2E1-4716-B6AD-1AE75C87E75C} = {DC74F351-6759-4E42-B689-CAECBF127BDD}
+		{28D130BB-B77C-43A4-B45A-5BB9C60EE14E} = {32CAA2F2-AE2B-4496-A521-1C2264E456EA}
+		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17} = {0E43E3E0-7CD8-49F2-97EC-9F704FEC2810}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBF04D03-C26B-4105-BECC-0836CFC8CA8B}
+	EndGlobalSection
+EndGlobal

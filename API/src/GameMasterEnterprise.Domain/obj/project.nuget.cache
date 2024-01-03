@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "i0+4WpagS/lT6KOqRpHYxhoko3tF9+3cMTZXau7LWBSRsBtWDpX5AV0xvWOmha1CYBoDtGzMcEu0nwny0kYUkw==",
+  "success": true,
+  "projectFilePath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eduardo\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512"
+  ],
+  "logs": []
+}

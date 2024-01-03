@@ -1,0 +1,128 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj": {}
+  },
+  "projects": {
+    "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj",
+        "projectName": "GameMasterEnterprise.Domain",
+        "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj",
+        "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
+        "outputPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj",
+        "projectName": "GameMasterEnterprise.Service",
+        "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj",
+        "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
+        "outputPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj": {
+                "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\API_GAME_MASTER\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
