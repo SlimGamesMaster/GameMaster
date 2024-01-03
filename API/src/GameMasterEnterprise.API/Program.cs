@@ -13,7 +13,7 @@ builder.Configuration
 
 builder.Services.AddDbContext<MeuDbContext>(options =>
 {
-    var connectionString = "server=localhost;port=3310;user=root;password=root;database=GameMasterEnterprise;";
+    var connectionString = "server=localhost;port=3306;user=slimgames;password=Isaacroque0209@;database=GameMasterEnterprise;";
 
 
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))

@@ -16,7 +16,7 @@ services:
   db:
     image: mysql
     environment:
-      MYSQL_USER: slimgame
+      MYSQL_USER: slimgames
       MYSQL_ROOT_PASSWORD: Isaacroque0209@
       MYSQL_DATABASE: GameMasterEnterprise
     ports:

@@ -11,7 +11,7 @@ namespace GameMasterEnterprise.API.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
                 //options.UseMySql("server=mysql-banco-api.mysql.database.azure.com;initial catalog = IPET;uid=MysqlRoot;pwd=Mudar#123",
-            options.UseMySql("server=localhost;port=3310;user=root;password=root;database=GameMasterEnterprise;",
+            options.UseMySql("server=localhost;port=3306;user=slimgames;password=Isaacroque0209@;database=GameMasterEnterprise;",
             Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         }
     } 

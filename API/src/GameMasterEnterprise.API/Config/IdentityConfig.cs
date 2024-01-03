@@ -17,7 +17,7 @@ namespace GameMasterEnterprise.APIConfiguration
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 //MYSQL
-                options.UseMySql("server=localhost;port=3310;user=root;password=root;database=GameMasterEnterprise;",
+                options.UseMySql("server=localhost;port=3306;user=slimgames;password=Isaacroque0209@;database=GameMasterEnterprise;",
                 Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql"));
                 //options.UseMySql("server=localhost;initial catalog = lastcodelogin;uid=root;pwd=Root",
                 //Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
