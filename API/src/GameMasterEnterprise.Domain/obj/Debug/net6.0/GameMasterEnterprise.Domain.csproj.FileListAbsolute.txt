@@ -11,3 +11,16 @@ D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Dom
 D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\refint\GameMasterEnterprise.Domain.dll
 D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.pdb
 D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\ref\GameMasterEnterprise.Domain.dll
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\bin\Debug\net6.0\GameMasterEnterprise.Domain.deps.json
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\bin\Debug\net6.0\GameMasterEnterprise.Domain.dll
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\bin\Debug\net6.0\GameMasterEnterprise.Domain.pdb
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.csproj.AssemblyReference.cache
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.AssemblyInfoInputs.cache
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.AssemblyInfo.cs
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.csproj.CoreCompileInputs.cache
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.sourcelink.json
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.dll
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\refint\GameMasterEnterprise.Domain.dll
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\GameMasterEnterprise.Domain.pdb
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Domain\obj\Debug\net6.0\ref\GameMasterEnterprise.Domain.dll

@@ -16,8 +16,8 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       - NUGET_FALLBACK_PACKAGES=
     volumes:
-      - D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.API:/app
-      - D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API:/src
+      - D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.API:/app
+      - D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API:/src
       - C:\Users\Eduardo\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\Eduardo\.nuget\packages\:/.nuget/packages:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
