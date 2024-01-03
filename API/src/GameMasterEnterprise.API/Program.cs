@@ -5,6 +5,7 @@ using GameMasterEnterprise.APIConfiguration;
 using Microsoft.AspNetCore.DataProtection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDataProtection();
 
 builder.Configuration
     .SetBasePath(builder.Environment.ContentRootPath)
@@ -26,11 +27,6 @@ builder.Services.ResolveDependencies();
 builder.Services.AddIdentityConfig(builder.Configuration);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddApiConfig();
-
-builder.Services.AddDataProtection()
-    .PersistKeysToFileSystem(new DirectoryInfo("/root/.aspnet/DataProtection-Keys"));
-
-
 
 var app = builder.Build();
 
