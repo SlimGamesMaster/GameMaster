@@ -9,6 +9,10 @@ namespace GameMasterEnterprise.Domain.Models
     public class Cassino : Entity
     {
         public string Nome {  get; set; }
+
+        public string Token { get; set; }
         public string Url { get; set; }
+
+        public ICollection<Sessao> Sessoes { get; set; }
     }
 }

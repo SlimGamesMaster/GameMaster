@@ -8,9 +8,10 @@ namespace GameMasterEnterprise.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Cassino> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.HasKey(c => c.Id);
 
             builder.ToTable("Cassino");
+
         }
     }
 }
