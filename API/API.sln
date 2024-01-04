@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMasterEnterprise.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameMasterEnterprise.Data", "src\GameMasterEnterprise.Data\GameMasterEnterprise.Data.csproj", "{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +43,6 @@ Global
 		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53996F49-A2C7-4C10-A7BC-B2709ECCDE17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9ACFD8E7-5840-49CA-BE08-7AB80B0DF557}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
