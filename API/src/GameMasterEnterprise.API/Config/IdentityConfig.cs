@@ -16,21 +16,10 @@ namespace GameMasterEnterprise.APIConfiguration
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                //MYSQL
-                options.UseMySql("server=localhost;port=3306;user=slimgames;password=Isaacroque0209@;database=GameMasterEnterprise;",
+                options.UseMySql("server=mysql-banco-api.mysql.database.azure.com;initial catalog = GameMasterEnterprise;uid=MysqlRoot;pwd=Mudar#123",
                 Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql"));
-                //options.UseMySql("server=localhost;initial catalog = lastcodelogin;uid=root;pwd=Root",
-                //Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-                //SQLSERVER
-                //options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
             });
-
-            //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-            //.AddEntityFrameworkStores<ApplicationDbContext>();
-            //.AddErrorDescriber<IdentityMensagensPortugues>()
-            //.AddRoles<IdentityRole>()
-            //.AddDefaultTokenProviders();
 
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()

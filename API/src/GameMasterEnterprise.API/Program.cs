@@ -15,7 +15,7 @@ builder.Configuration
 
 builder.Services.AddDbContext<MeuDbContext>(options =>
 {
-    var connectionString = "server=localhost;port=3306;user=slimgames;password=Isaacroque0209@;database=GameMasterEnterprise;";
+    var connectionString = "server=mysql-banco-api.mysql.database.azure.com;initial catalog = GameMasterEnterprise;uid=MysqlRoot;pwd=Mudar#123";
 
 
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
