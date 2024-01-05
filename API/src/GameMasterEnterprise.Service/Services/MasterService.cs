@@ -108,7 +108,7 @@ namespace GameMasterEnterprise.Service.Services
                  var urlCassino = await _cassinoRepository.ObterUrlCassino(cassinoId);
                 var nomeJogo = await _jogoRepository.ObterNomeJogo(jogoId); 
 
-                return $"{urlCassino}/{nomeJogo}?sessao={sessaoId}";
+                return $"slimgamesmaster.com/{nomeJogo}/index.php?sessao={sessaoId}";
             }
             catch (Exception ex)
             {

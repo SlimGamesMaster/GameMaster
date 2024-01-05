@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameMasterEnterprise.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+790894ddefede26a08d658607a4232bdce0094d2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f17a94bbf90e26d62258dcb232fc147eb2fc0e7b")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameMasterEnterprise.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameMasterEnterprise.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

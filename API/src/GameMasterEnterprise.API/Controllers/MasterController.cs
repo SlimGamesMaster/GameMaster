@@ -60,11 +60,10 @@ namespace Ipet.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("/")]
+        [HttpPost("game_launch")]
         public async Task<IActionResult> RecebeDados(MasterViewModel master)
         {
-            if (master.Metodo == "game_launch")
-            {
+
                 // Consulta Token Cassino   
                 var cassinoId = await _masterService.ObterIdCassinoPorToken(master.TokenCassino);
                 if (cassinoId == null)
@@ -112,15 +111,6 @@ namespace Ipet.API.Controllers
  
 
                 
-            }
-            else
-            {
-                var failResponse = new FailResponse
-                {
-                    Msg = "Metodo Desconhecido"
-                };
-                return BadRequest(failResponse);
-            }
         }
 
     }
