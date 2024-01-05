@@ -5,6 +5,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
 {
     public interface IMasterService
     {
+        Task<bool> ConsultaSaldoJogador(string token);
         Task<string> CriarSessao(Master master, Guid cassinoId, Guid jogoId, Guid playerId);
         Task<Guid> ObterIdCassinoPorToken(string tokenCassino);
         Task<Guid> VerificarCodigoJogo(int codigoJogo);

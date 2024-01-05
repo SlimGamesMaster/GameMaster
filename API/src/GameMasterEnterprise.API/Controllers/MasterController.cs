@@ -60,7 +60,7 @@ namespace Ipet.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("game_launch")]
+        [HttpPost("abrir-jogo")]
         public async Task<IActionResult> RecebeDados(MasterViewModel master)
         {
 
@@ -111,6 +111,11 @@ namespace Ipet.API.Controllers
  
 
                 
+        }
+        [HttpGet("consulta-saldo")]
+        public async Task<bool> ConsultaSaldo (string tokenUsuario)
+        {         
+            return await _masterService.ConsultaSaldoJogador(tokenUsuario);
         }
 
     }

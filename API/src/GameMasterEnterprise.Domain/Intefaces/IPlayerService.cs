@@ -8,6 +8,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task AtualizarPlayer(Guid PlayerId, Player PlayerNovo);
         Task CriarPlayer(Player Player);
         Task<Player> ObterPlayer(Guid PlayerId);
+        Task<Guid?> ObterPlayerIdPorToken(string Token);
         Task<Player> ObterPlayerPorNome(string Nome);
         Task<Player> ObterPlayerPorToken(string Token);
         Task<IEnumerable<Player>> ObterTodosPlayers();

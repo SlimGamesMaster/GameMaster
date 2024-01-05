@@ -14,17 +14,17 @@ D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Dat
 D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\refint\GameMasterEnterprise.Data.dll
 D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.pdb
 D:\AMBIENTE DEV\C#\30.12.23.API\API_GAME_MASTER\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\ref\GameMasterEnterprise.Data.dll
-D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Data.deps.json
-D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Data.dll
-D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Data.pdb
-D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Domain.dll
-D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Domain.pdb
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.csproj.AssemblyReference.cache
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.GeneratedMSBuildEditorConfig.editorconfig
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.AssemblyInfoInputs.cache
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.AssemblyInfo.cs
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.csproj.CoreCompileInputs.cache
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.sourcelink.json
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Data.deps.json
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Data.dll
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Data.pdb
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Domain.dll
+D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\bin\Debug\net6.0\GameMasterEnterprise.Domain.pdb
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.csproj.CopyComplete
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\GameMasterEnterprise.Data.dll
 D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Data\obj\Debug\net6.0\refint\GameMasterEnterprise.Data.dll

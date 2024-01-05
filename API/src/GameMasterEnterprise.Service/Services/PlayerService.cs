@@ -68,6 +68,33 @@ namespace GameMasterEnterprise.Service.Services
 
             }
         }
+
+        public async Task<Guid?> ObterPlayerIdPorToken(string Token)
+        {
+            var id = await _playerRepository.ObterPorToken(Token);
+
+            if (id == null)
+            {
+                Notificar("Cassino não encontrado.");
+                return null;
+            }
+
+            return id.Id;
+        }
+        public async Task<Guid?> ObterCassinoIdPorPlayerId(Guid idPlayer)
+        {
+            var id = await _playerRepository.ObterCassinoIdPorPlayerId(idPlayer);
+
+            if (id == null)
+            {
+                Notificar("Cassino não encontrado.");
+                return null;
+            }
+
+            return id.Id;
+        }
+
+
         public async Task<IEnumerable<Player>> ObterTodosPlayers()
         {
             return await _playerRepository.ObterTodos();

@@ -14,6 +14,7 @@ namespace GameMasterEnterprise.Data.Context
         public DbSet<Cassino> Cassino { get; set; }
         public DbSet<Jogo> Jogo { get; set; }
         public DbSet<Player> Player { get; set; }
+        public DbSet<PlayerSaldo> PlayerSaldo { get; set; }
         public DbSet<Sessao> Sessao { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

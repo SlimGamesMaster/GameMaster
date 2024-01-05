@@ -20,7 +20,6 @@ namespace GameMasterEnterprise.Data.Repository
 
             return cassino?.Url;
         }
-
         public async Task<Cassino> ObterPorToken(string token)  
         {
             return await Db.Cassino.AsNoTracking()

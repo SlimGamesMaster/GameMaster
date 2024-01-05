@@ -4,8 +4,6 @@ namespace GameMasterEnterprise.API.Models.Request
 {
     public class MasterViewModel
     {
-        [Required(ErrorMessage = "O campo Method é obrigatório.")]
-        public string Metodo { get; set; }
 
         [Required(ErrorMessage = "O campo Method é obrigatório.")]
         public string NomeJogador { get; set; }
@@ -15,9 +13,6 @@ namespace GameMasterEnterprise.API.Models.Request
 
         [Required(ErrorMessage = "O campo Method é obrigatório.")]
         public string TokenCassino { get; set; }
-
-        [Required(ErrorMessage = "O campo AgentCode é obrigatório.")]
-        public string ProviderCode { get; set; }
 
         [Required(ErrorMessage = "O campo GameCode é obrigatório.")]
         public int CodigoJogo { get; set; }

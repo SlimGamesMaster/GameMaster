@@ -117,5 +117,21 @@ namespace GameMasterEnterprise.Service.Services
             }
         }
 
+
+        public async Task<bool> ConsultaSaldoJogador(string token)
+        {
+            var idPlayer = await _playerService.ObterPlayerIdPorToken(token);
+            if (idPlayer == null ) { return false; }
+
+            var idCassino = 
+
+            return true;
+        }
+
+
+
+
+
+
     }
 }

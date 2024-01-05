@@ -23,6 +23,9 @@ namespace GameMasterEnterprise.API.Configuration
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
 
+            services.AddScoped<IPlayerSaldoService, PlayerSaldoService>();
+            services.AddScoped<IPlayerSaldoRepository, PlayerSaldoRepository>();
+
             services.AddScoped<IJogoService, JogoService>();
             services.AddScoped<IJogoRepository, JogoRepository>();
 

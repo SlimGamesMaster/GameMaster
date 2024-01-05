@@ -15,6 +15,7 @@ namespace Ipet.API.Configuration
             CreateMap<Player, PlayerViewModel>().ReverseMap();
             CreateMap<Sessao, SessaoViewModel>().ReverseMap();
             CreateMap<Jogo, JogoViewModel>().ReverseMap();
+            CreateMap<PlayerSaldo, PlayerSaldoViewModel>().ReverseMap();
 
 
         }

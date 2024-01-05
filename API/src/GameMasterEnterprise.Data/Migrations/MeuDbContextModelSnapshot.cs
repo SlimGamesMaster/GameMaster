@@ -93,6 +93,29 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.ToTable("Player", (string)null);
                 });
 
+            modelBuilder.Entity("GameMasterEnterprise.Domain.Models.PlayerSaldo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("PlayerId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<float>("Saldo")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PlayerId")
+                        .IsUnique();
+
+                    b.ToTable("PlayerSaldo", (string)null);
+                });
+
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Sessao", b =>
                 {
                     b.Property<Guid>("Id")
@@ -135,6 +158,16 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.Navigation("Cassino");
                 });
 
+            modelBuilder.Entity("GameMasterEnterprise.Domain.Models.PlayerSaldo", b =>
+                {
+                    b.HasOne("GameMasterEnterprise.Domain.Models.Player", "Player")
+                        .WithOne("PlayerSaldo")
+                        .HasForeignKey("GameMasterEnterprise.Domain.Models.PlayerSaldo", "PlayerId")
+                        .IsRequired();
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Sessao", b =>
                 {
                     b.HasOne("GameMasterEnterprise.Domain.Models.Cassino", "Cassino")
@@ -170,6 +203,9 @@ namespace GameMasterEnterprise.Data.Migrations
 
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Player", b =>
                 {
+                    b.Navigation("PlayerSaldo")
+                        .IsRequired();
+
                     b.Navigation("Sessoes");
                 });
 #pragma warning restore 612, 618

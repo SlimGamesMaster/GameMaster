@@ -14,6 +14,12 @@ namespace GameMasterEnterprise.Data.Mappings
                     .HasForeignKey(p => p.CassinoId)
                     .OnDelete(DeleteBehavior.SetNull);
 
+            builder.HasOne(p => p.PlayerSaldo)
+                  .WithOne(ps => ps.Player)
+                  .HasForeignKey<PlayerSaldo>(ps => ps.PlayerId)
+                  .OnDelete(DeleteBehavior.Cascade);
+
+
             builder.ToTable("Player");
         }
     }
