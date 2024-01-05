@@ -89,7 +89,7 @@ namespace GameMasterEnterprise.Service.Services
             }
         }
 
-        public async Task<string> CriarSessao(Master? master, Guid? cassinoId, Guid? jogoId, Guid? playerId)
+        public async Task<string> CriarSessao(Master master, Guid cassinoId, Guid jogoId, Guid playerId)
         {
             try
             {
@@ -98,22 +98,22 @@ namespace GameMasterEnterprise.Service.Services
                 var novaSessao = new Sessao
                 {
                     Dificuldade = master.Dificuldade,
-                    CassinoId = cassinoId.Value,
-                    JogoId = jogoId.Value,
-                    PlayerId = playerId.Value
+                    CassinoId = cassinoId,
+                    JogoId = jogoId,
+                    PlayerId = playerId
                 };
 
                 // Chame um método do seu serviço ou repositório para criar a sessão
-                 await _sessaoService.CriarSessao(novaSessao);
+                 var sessaoId = await _sessaoService.CriarSessao(novaSessao);
+                 var urlCassino = await _cassinoRepository.ObterUrlCassino(cassinoId);
+                var nomeJogo = await _jogoRepository.ObterNomeJogo(jogoId); 
 
-                // Retorne a URL criada ou alguma outra informação relevante
-                return "";
+                return $"{urlCassino}/{nomeJogo}?sessao={sessaoId}";
             }
             catch (Exception ex)
             {
-                // Se ocorrer um erro, notifique ou registre o erro conforme necessário
                 Notificar($"Erro ao criar a sessão: {ex.Message}");
-                throw; // Lança a exceção para que possa ser tratada na controladora
+                throw;
             }
         }
 

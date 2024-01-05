@@ -21,6 +21,14 @@ namespace GameMasterEnterprise.Data.Repository
                 .FirstOrDefaultAsync(c => c.Codigo == codigo);
         }
 
+        public async Task<string> ObterNomeJogo(Guid id)
+        {
+            var jogo = await Db.Jogo.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            return jogo?.Nome;
+        }
+
 
     }
 }

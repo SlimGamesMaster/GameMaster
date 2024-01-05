@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameMasterEnterprise.Data")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cacfb3108a92dbc38d4f366f028e784aa6f01140")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf8060f245a2249ae9e97497ad0f85c004db41e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameMasterEnterprise.Data")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameMasterEnterprise.Data")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

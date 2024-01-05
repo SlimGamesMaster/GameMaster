@@ -6,7 +6,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
     public interface ISessaoService
     {
         Task AtualizarSessao(Guid SessaoId, Sessao SessaoNovo);
-        Task CriarSessao(Sessao Sessao);
+        Task<Guid> CriarSessao(Sessao sessao);
         Task Dispose();
         Task<Sessao> ObterSessao(Guid SessaoId);
         Task<IEnumerable<Sessao>> ObterTodosSessaos();

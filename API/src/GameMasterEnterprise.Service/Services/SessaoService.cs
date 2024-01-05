@@ -26,28 +26,29 @@ namespace GameMasterEnterprise.Service.Services
             }
             return SessaoPorId;
         }
-        public async Task CriarSessao(Sessao Sessao)
+        public async Task<Guid> CriarSessao(Sessao sessao)
         {
-            if (Sessao != null)
+            if (sessao != null)
             {
-                var SessaoPorId = await _SessaoRepository.ObterPorId(Sessao.Id);
+                var sessaoPorId = await _SessaoRepository.ObterPorId(sessao.Id);
 
-                if (SessaoPorId != null)
+                if (sessaoPorId != null)
                 {
                     Notificar("Sessao já existente.");
-                    return;
+                    return sessaoPorId.Id; 
                 }
                 else
                 {
-                    await _SessaoRepository.Adicionar(Sessao);
+                    var sessaoId = await _SessaoRepository.GerarSessao(sessao);
+                    return sessaoId;
                 }
             }
             else
             {
-
                 throw new InvalidOperationException("Sessão já cadastrada");
             }
         }
+
         public async Task<IEnumerable<Sessao>> ObterTodosSessaos()
         {
             return await _SessaoRepository.ObterTodos();

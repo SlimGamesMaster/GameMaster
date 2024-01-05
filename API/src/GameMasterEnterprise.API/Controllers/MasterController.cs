@@ -3,6 +3,7 @@ using GameMasterEnterprise.API.Controllers;
 using GameMasterEnterprise.API.Extensions;
 using GameMasterEnterprise.API.Models.Request;
 using GameMasterEnterprise.API.Models.Response.Base;
+using GameMasterEnterprise.API.Models.Response.Correct;
 using GameMasterEnterprise.API.Models.Response.Correct.Base;
 using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
@@ -99,11 +100,17 @@ namespace Ipet.API.Controllers
                 }
 
                 // Criação da Sessão
+
                 var urlDaSessao = await _masterService.CriarSessao(_mapper.Map<Master>(master), cassinoId, jogoId, playerId);
 
 
-                // Retorna a URL da sessão ou outras informações relevantes
-                return Ok(new { UrlSessao = urlDaSessao });
+                    var url = new SuccessLaunchGameResponse
+                    {
+                        LaunchUrl = urlDaSessao,
+                    };
+                    return Ok(url);
+ 
+
                 
             }
             else
