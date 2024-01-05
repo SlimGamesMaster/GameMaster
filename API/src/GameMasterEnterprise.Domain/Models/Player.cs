@@ -9,7 +9,8 @@ namespace GameMasterEnterprise.Domain.Models
     public class Player : Entity
     {
         public string Nome {  get; set; }
-        public int Token { get; set; }
+        public string Token { get; set; }
         public ICollection<Sessao> Sessoes { get; set; }
+
     }
 }

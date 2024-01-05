@@ -38,5 +38,35 @@ namespace GameMasterEnterprise.Service.Services
 
             return false;
         }
+
+        public string GerarToken()
+        {
+            try
+            {
+                const string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                const int comprimentoToken = 50;
+
+                char[] token = new char[comprimentoToken];
+
+                using (var gerador = new System.Security.Cryptography.RNGCryptoServiceProvider())
+                {
+                    byte[] bytes = new byte[comprimentoToken];
+
+                    gerador.GetBytes(bytes);
+
+                    for (int i = 0; i < comprimentoToken; i++)
+                    {
+                        token[i] = caracteresPermitidos[bytes[i] % caracteresPermitidos.Length];
+                    }
+                }
+
+                return new string(token);
+            }
+            catch (Exception ex)
+            {
+                Notificar("Erro ao gerar o Token " + ex.Message);
+                return null;
+            }
+        }
     }
 }

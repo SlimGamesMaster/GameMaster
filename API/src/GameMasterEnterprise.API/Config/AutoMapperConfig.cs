@@ -10,6 +10,9 @@ namespace Ipet.API.Configuration
         {
 
             CreateMap<Cassino, CassinoViewModel>().ReverseMap();
+            CreateMap<Player, PlayerViewModel>().ReverseMap();
+            CreateMap<Sessao, SessaoViewModel>().ReverseMap();
+            CreateMap<Jogo, JogoViewModel>().ReverseMap();
 
 
         }

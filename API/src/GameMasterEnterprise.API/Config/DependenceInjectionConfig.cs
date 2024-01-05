@@ -20,6 +20,16 @@ namespace GameMasterEnterprise.API.Configuration
             services.AddScoped<ICassinoService, CassinoService>();
             services.AddScoped<ICassinoRepository, CassinoRepository>();
 
+            services.AddScoped<IPlayerService, PlayerService>();
+            services.AddScoped<IPlayerRepository, PlayerRepository>();
+
+            services.AddScoped<IJogoService, JogoService>();
+            services.AddScoped<IJogoRepository, JogoRepository>();
+
+            services.AddScoped<ISessaoService, SessaoService>();
+            services.AddScoped<ISessaoRepository, SessaoRepository>();
+
+            services.AddScoped<IMasterService, MasterService>();
 
             services.AddScoped<INotificador, Notificador>();
             return services;

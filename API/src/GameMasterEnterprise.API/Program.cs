@@ -15,8 +15,7 @@ builder.Configuration
 
 builder.Services.AddDbContext<MeuDbContext>(options =>
 {
-    var connectionString = "server=mysql-banco-api.mysql.database.azure.com;initial catalog = GameMasterEnterprise;uid=MysqlRoot;pwd=Mudar#123";
-
+    var connectionString = builder.Configuration.GetConnectionString("connection");
 
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);

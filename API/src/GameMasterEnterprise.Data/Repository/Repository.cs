@@ -23,31 +23,31 @@ namespace GameMasterEnterprise.Data.Repository
             await SaveChanges();
         }
 
-        public virtual async Task<TEntity> ObterPorId(Guid id)
+        public async Task<TEntity> ObterPorId(Guid id)
         {
             return await DbSet.FindAsync(id);
             await SaveChanges();
         }
 
-        public virtual async Task<List<TEntity>> ObterTodos()
+        public async Task<List<TEntity>> ObterTodos()
         {
             return await DbSet.ToListAsync();
             await SaveChanges();
         }
 
-        public virtual async Task Adicionar(TEntity entity)
+        public async Task Adicionar(TEntity entity)
         {
             DbSet.Add(entity);
             await SaveChanges();
         }
 
-        public virtual async Task Atualizar(TEntity entity)
+        public async Task Atualizar(TEntity entity)
         {
             DbSet.Update(entity);
             await SaveChanges();
         }
 
-        public virtual async Task Remover(Guid id)
+        public async Task Remover(Guid id)
         {
             DbSet.Remove(new TEntity { Id = id });
             await SaveChanges();

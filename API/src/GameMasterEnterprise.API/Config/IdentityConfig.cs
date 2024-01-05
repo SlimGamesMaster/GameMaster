@@ -16,9 +16,8 @@ namespace GameMasterEnterprise.APIConfiguration
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseMySql("server=mysql-banco-api.mysql.database.azure.com;initial catalog = GameMasterEnterprise;uid=MysqlRoot;pwd=Mudar#123",
-                Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql"));
-
+                var connectionString = configuration.GetConnectionString("connection");
+                options.UseMySql(connectionString, Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.0-mysql"));
             });
 
             services.AddDefaultIdentity<IdentityUser>()

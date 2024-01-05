@@ -12,7 +12,7 @@ namespace GameMasterEnterprise.Service.Services
         public JogoService(IJogoRepository JogoRepository, INotificador notificador)
             : base(notificador)
         {
-            JogoRepository = _JogoRepository;
+            _JogoRepository = JogoRepository;
         }
 
         public async Task<Jogo> ObterJogo(Guid JogoId)

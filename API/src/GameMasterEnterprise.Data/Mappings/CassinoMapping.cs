@@ -11,7 +11,6 @@ namespace GameMasterEnterprise.Data.Mappings
             builder.HasKey(c => c.Id);
 
             builder.ToTable("Cassino");
-
         }
     }
 }

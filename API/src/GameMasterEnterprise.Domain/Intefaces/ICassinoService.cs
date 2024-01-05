@@ -8,6 +8,8 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task AtualizarCassino(Guid cassinoId, Cassino cassinoNovo);
         Task CriarCassino(Cassino cassino);
         Task<Cassino> ObterCassino(Guid cassinoId);
+        Task<Cassino> ObterCassinoPorNome(string Nome);
+        Task<Cassino> ObterCassinoPorToken(string Token);
         Task<IEnumerable<Cassino>> ObterTodosCassinos();
         Task RemoverCassino(Guid cassinoId);
     }

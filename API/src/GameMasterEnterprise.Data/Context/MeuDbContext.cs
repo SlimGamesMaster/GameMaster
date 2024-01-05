@@ -12,9 +12,9 @@ namespace GameMasterEnterprise.Data.Context
             ChangeTracker.AutoDetectChangesEnabled = false;
         }
         public DbSet<Cassino> Cassino { get; set; }
-        public DbSet<Jogo> Jogo { get; set; }
-        public DbSet<Player> Player { get; set; }
-        public DbSet<Sessao> Sessao { get; set; }
+        //public DbSet<Jogo> Jogo { get; set; }
+        //public DbSet<Player> Player { get; set; }
+        //public DbSet<Sessao> Sessao { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var property in modelBuilder.Model.GetEntityTypes()
