@@ -12,6 +12,8 @@ namespace GameMasterEnterprise.Domain.Models
 
         public string Token { get; set; }
         public string Url { get; set; }
-        public ICollection<Sessao> Sessoes { get; set; }
+
+        public ICollection<Player>? Players { get; set; }
+        public ICollection<Sessao>? Sessoes { get; set; }
     }
 }

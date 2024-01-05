@@ -19,11 +19,7 @@ namespace Ipet.API.Controllers
     public class CassinoController : HomeController
     {
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly IMasterService _masterService;
-        private readonly IJogoService _jogoService;
         private readonly ICassinoService _cassinoService;
-        private readonly IPlayerService _playerService;
-        private readonly ISessaoService _sessaoService;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
 
@@ -31,23 +27,13 @@ namespace Ipet.API.Controllers
         private readonly ILogger _logger;
         public CassinoController(
             IMapper mapper, INotificador notificador,
-            IJogoService jogoService,
             ICassinoService cassinoService,
-            IPlayerService playerService,
-            ISessaoService sessaoService,
-
-
-                              IMasterService masterService,
                               SignInManager<IdentityUser> signInManager,
                               UserManager<IdentityUser> userManager,
                               IOptions<AppSettings> appSettings,
                               IUser user, ILogger<AutenticacaoController> logger) : base(notificador, user)
         {
-            _jogoService = jogoService;
             _cassinoService = cassinoService;
-            _playerService = playerService;
-            _sessaoService = sessaoService;
-            _masterService = masterService;
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;

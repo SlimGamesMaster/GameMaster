@@ -20,9 +20,9 @@ namespace GameMasterEnterprise.API.Models.Request
         public string ProviderCode { get; set; }
 
         [Required(ErrorMessage = "O campo GameCode é obrigatório.")]
-        public string CodigoJogo { get; set; }
+        public int CodigoJogo { get; set; }
 
         [Required(ErrorMessage = "O campo Lang é obrigatório.")]
-        public string Lang { get; set; }
+        public int Dificuldade { get; set; }
     }
 }

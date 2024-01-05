@@ -21,5 +21,6 @@ namespace GameMasterEnterprise.Data.Repository
                 .FirstOrDefaultAsync(c => c.Codigo == codigo);
         }
 
+
     }
 }

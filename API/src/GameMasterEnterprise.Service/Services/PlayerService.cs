@@ -57,12 +57,15 @@ namespace GameMasterEnterprise.Service.Services
                     Notificar("Player já existente.");
                     return;
                 }
+                else
+                {
+                    await _playerRepository.Adicionar(Player);
+                }
             }
             else
             {
-                await _playerRepository.Adicionar(Player);
-                Notificar("Player criado com sucesso.");
-                return;
+                throw new InvalidOperationException("Erro interno ao Salvar o Usuario");
+
             }
         }
         public async Task<IEnumerable<Player>> ObterTodosPlayers()

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GameMasterEnterprise.Data.Migrations
 {
-    public partial class Teste : Migration
+    public partial class Testing : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,6 +52,7 @@ namespace GameMasterEnterprise.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    CassinoId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Token = table.Column<string>(type: "varchar(100)", nullable: false)
@@ -61,6 +62,11 @@ namespace GameMasterEnterprise.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Player", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Player_Cassino_CassinoId",
+                        column: x => x.CassinoId,
+                        principalTable: "Cassino",
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -97,6 +103,11 @@ namespace GameMasterEnterprise.Data.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Player_CassinoId",
+                table: "Player",
+                column: "CassinoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sessao_CassinoId",
                 table: "Sessao",
                 column: "CassinoId");
@@ -118,13 +129,13 @@ namespace GameMasterEnterprise.Data.Migrations
                 name: "Sessao");
 
             migrationBuilder.DropTable(
-                name: "Cassino");
-
-            migrationBuilder.DropTable(
                 name: "Jogo");
 
             migrationBuilder.DropTable(
                 name: "Player");
+
+            migrationBuilder.DropTable(
+                name: "Cassino");
         }
     }
 }

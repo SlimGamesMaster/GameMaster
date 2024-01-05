@@ -9,6 +9,10 @@ namespace GameMasterEnterprise.Data.Mappings
         public void Configure(EntityTypeBuilder<Player> builder)
         {
             builder.HasKey(p => p.Id);
+            builder.HasOne(p => p.Cassino)
+                    .WithMany(c => c.Players)
+                    .HasForeignKey(p => p.CassinoId)
+                    .OnDelete(DeleteBehavior.SetNull);
 
             builder.ToTable("Player");
         }

@@ -17,6 +17,12 @@ namespace GameMasterEnterprise.Data.Repository
         {
             return await DbSet.FirstOrDefaultAsync(c => c.Token == token);
         }
+        public async Task<IEnumerable<Player>> ObterPlayersPorCassinoId(Guid cassinoId)
+        {
+            return await Db.Player.AsNoTracking()
+                .Where(p => p.CassinoId == cassinoId)
+                .ToListAsync();
+        }
 
     }
 }

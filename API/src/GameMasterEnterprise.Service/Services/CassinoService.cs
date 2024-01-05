@@ -49,6 +49,19 @@ namespace GameMasterEnterprise.Service.Services
             }
             return cassinoPorId;
         }
+        public async Task<Guid?> ObterCassinoIdPorToken(string Token)
+        {
+            var cassinoPorId = await _cassinoRepository.ObterPorToken(Token);
+
+            if (cassinoPorId == null)
+            {
+                Notificar("Cassino não encontrado.");
+                return null;
+            }
+
+            return cassinoPorId.Id;
+        }
+
         public async Task CriarCassino(Cassino cassino)
         {
 

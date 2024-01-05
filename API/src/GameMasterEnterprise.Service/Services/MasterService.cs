@@ -1,7 +1,5 @@
 ﻿using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
-using GameMasterEnterprise.Domain.Notificacoes;
-using GameMasterEnterprise.Service.Services;
 
 namespace GameMasterEnterprise.Service.Services
 {
@@ -12,21 +10,112 @@ namespace GameMasterEnterprise.Service.Services
         private readonly IPlayerService _playerService;
         private readonly ISessaoService _sessaoService;
 
+        private readonly IJogoRepository _jogoRepository;
+        private readonly ICassinoRepository _cassinoRepository;
+        private readonly IPlayerRepository _playerRepository;
+        private readonly ISessaoRepository _sessaoRepository;
+
         public MasterService(
             INotificador notificador,
             IJogoService jogoService,
             ICassinoService cassinoService,
             IPlayerService playerService,
-            ISessaoService sessaoService)
+            ISessaoService sessaoService,
+            IJogoRepository jogoRepository,
+            ICassinoRepository cassinoRepository,
+            IPlayerRepository playerRepository,
+            ISessaoRepository sessaoRepository)
             : base(notificador)
         {
             _jogoService = jogoService;
             _cassinoService = cassinoService;
             _playerService = playerService;
             _sessaoService = sessaoService;
+
+            _jogoRepository = jogoRepository;
+            _cassinoRepository = cassinoRepository;
+            _playerRepository = playerRepository;
+            _sessaoRepository = sessaoRepository;
         }
 
+        public async Task<Guid> ObterIdCassinoPorToken(string tokenCassino)
+        {
+            var cassinoId = await _cassinoService.ObterCassinoIdPorToken(tokenCassino);
+            return (Guid)cassinoId;
+        }
+        public async Task<Guid> VerificarCodigoJogo(int codigoJogo)
+        {
+            var jogo = await _jogoService.ObterJogoPorCodigo(codigoJogo);
+            return (Guid)jogo;
+        }
 
-        
+        public async Task<Guid> VerificarUsuarioCassino(string tokenCassino, string tokenJogador, string nomeJogador)
+        {
+            try
+            {
+                var cassino = await _cassinoService.ObterCassinoPorToken(tokenCassino);
+
+                if (cassino != null)
+                {
+                    var players = await _playerRepository.ObterPlayersPorCassinoId(cassino.Id);
+
+                    var jogadorComToken = players.FirstOrDefault(p => p.Token == tokenJogador);
+
+                    if (jogadorComToken != null)
+                    {
+                        return jogadorComToken.Id;
+                    }
+
+                    var novoPlayer = new Player
+                    {
+                        CassinoId = cassino.Id,
+                        Nome = nomeJogador,
+                        Token = tokenJogador
+                    };
+
+                    await _playerService.CriarPlayer(novoPlayer);
+
+                    return novoPlayer.Id;
+                }
+                else
+                {
+                    return Guid.Empty; // Ou outra abordagem para indicar que o jogador não foi encontrado
+                }
+            }
+            catch (Exception ex)
+            {
+                Notificar($"Erro ao verificar/criar jogador: {ex.Message}");
+                return Guid.Empty; // Ou outra abordagem para indicar um erro
+            }
+        }
+
+        public async Task<string> CriarSessao(Master? master, Guid? cassinoId, Guid? jogoId, Guid? playerId)
+        {
+            try
+            {
+                // Lógica para criar a sessão
+
+                var novaSessao = new Sessao
+                {
+                    Dificuldade = master.Dificuldade,
+                    CassinoId = cassinoId.Value,
+                    JogoId = jogoId.Value,
+                    PlayerId = playerId.Value
+                };
+
+                // Chame um método do seu serviço ou repositório para criar a sessão
+                 await _sessaoService.CriarSessao(novaSessao);
+
+                // Retorne a URL criada ou alguma outra informação relevante
+                return "";
+            }
+            catch (Exception ex)
+            {
+                // Se ocorrer um erro, notifique ou registre o erro conforme necessário
+                Notificar($"Erro ao criar a sessão: {ex.Message}");
+                throw; // Lança a exceção para que possa ser tratada na controladora
+            }
+        }
+
     }
 }

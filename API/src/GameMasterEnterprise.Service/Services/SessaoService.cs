@@ -12,7 +12,7 @@ namespace GameMasterEnterprise.Service.Services
         public SessaoService(ISessaoRepository SessaoRepository, INotificador notificador)
             : base(notificador)
         {
-            SessaoRepository = _SessaoRepository;
+            _SessaoRepository = SessaoRepository;
         }
 
         public async Task<Sessao> ObterSessao(Guid SessaoId)
@@ -37,12 +37,15 @@ namespace GameMasterEnterprise.Service.Services
                     Notificar("Sessao já existente.");
                     return;
                 }
+                else
+                {
+                    await _SessaoRepository.Adicionar(Sessao);
+                }
             }
             else
             {
-                await _SessaoRepository.Adicionar(Sessao);
-                Notificar("Sessao criado com sucesso.");
-                return;
+
+                throw new InvalidOperationException("Sessão já cadastrada");
             }
         }
         public async Task<IEnumerable<Sessao>> ObterTodosSessaos()

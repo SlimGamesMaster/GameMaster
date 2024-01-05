@@ -10,6 +10,12 @@ namespace GameMasterEnterprise.Data.Mappings
         {
             builder.HasKey(c => c.Id);
 
+            builder.HasMany(c => c.Players)
+                    .WithOne(p => p.Cassino)
+                    .HasForeignKey(p => p.CassinoId)
+                    .OnDelete(DeleteBehavior.SetNull);
+
+
             builder.ToTable("Cassino");
         }
     }

@@ -26,6 +26,18 @@ namespace GameMasterEnterprise.Service.Services
             }
             return JogoPorId;
         }
+        public async Task<Guid?> ObterJogoPorCodigo(int JogoId)
+        {
+            var JogoPorId = await _JogoRepository.ObterPorCodigo(JogoId);
+
+            if (JogoPorId == null)
+            {
+                Notificar("Cassino não encontrado.");
+                return null;
+            }
+
+            return JogoPorId.Id;
+        }
         public async Task CriarJogo(Jogo Jogo)
         {
             if (Jogo != null)

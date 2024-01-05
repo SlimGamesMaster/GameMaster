@@ -10,6 +10,6 @@ namespace GameMasterEnterprise.Domain.Models
     {
         public string Nome {  get; set; }
         public int Codigo { get; set; }
-        public ICollection<Sessao> Sessoes { get; set; }
+        public ICollection<Sessao>? Sessoes { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task CriarJogo(Jogo Jogo);
         Task Dispose();
         Task<Jogo> ObterJogo(Guid JogoId);
+        Task<Guid?> ObterJogoPorCodigo(int JogoId);
         Task<IEnumerable<Jogo>> ObterTodosJogos();
         Task RemoverJogo(Guid JogoId);
     }

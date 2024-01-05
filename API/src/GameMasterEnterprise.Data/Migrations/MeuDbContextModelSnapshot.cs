@@ -72,6 +72,9 @@ namespace GameMasterEnterprise.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid>("CassinoId")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime(6)");
 
@@ -84,6 +87,8 @@ namespace GameMasterEnterprise.Data.Migrations
                         .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CassinoId");
 
                     b.ToTable("Player", (string)null);
                 });
@@ -120,6 +125,16 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.ToTable("Sessao", (string)null);
                 });
 
+            modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Player", b =>
+                {
+                    b.HasOne("GameMasterEnterprise.Domain.Models.Cassino", "Cassino")
+                        .WithMany("Players")
+                        .HasForeignKey("CassinoId")
+                        .IsRequired();
+
+                    b.Navigation("Cassino");
+                });
+
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Sessao", b =>
                 {
                     b.HasOne("GameMasterEnterprise.Domain.Models.Cassino", "Cassino")
@@ -143,6 +158,8 @@ namespace GameMasterEnterprise.Data.Migrations
 
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Cassino", b =>
                 {
+                    b.Navigation("Players");
+
                     b.Navigation("Sessoes");
                 });
 
