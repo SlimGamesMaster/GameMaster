@@ -56,7 +56,7 @@ namespace GameMasterEnterprise.Service.Services
             var consultaCassino_2 = await _cassinoRepository.ObterPorNome(cassino.Nome);
             var consultaCassino_3 = await _cassinoRepository.ObterPorToken(cassino.Token);
 
-            if (consultaCassino == null && consultaCassino_2 == null && consultaCassino_3 == null )
+            if (consultaCassino == null || consultaCassino_2 == null || consultaCassino_3 == null )
             {
                  await _cassinoRepository.Adicionar(cassino);
                 return;

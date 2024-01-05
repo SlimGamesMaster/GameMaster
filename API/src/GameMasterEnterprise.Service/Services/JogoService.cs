@@ -31,10 +31,16 @@ namespace GameMasterEnterprise.Service.Services
             if (Jogo != null)
             {
                 var JogoPorId = await _JogoRepository.ObterPorId(Jogo.Id);
+                var JogoPorId_1 = await _JogoRepository.ObterPorNome(Jogo.Nome);
+                var JogoPorId_2 = await _JogoRepository.ObterPorCodigo(Jogo.Codigo);
 
-                if (JogoPorId != null)
+                if (JogoPorId != null || JogoPorId_1 != null || JogoPorId_2 != null)
                 {
-                    Notificar("Jogo já existente.");
+                    throw new InvalidOperationException("Jogo já cadastrado");
+                }
+                else
+                {
+                    await _JogoRepository.Adicionar(Jogo);
                     return;
                 }
             }
