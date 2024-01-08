@@ -24,7 +24,7 @@ namespace GameMasterEnterprise.Data.Repository
                 .ToListAsync();
         }
 
-        public async Task<Guid?> ObterCassinoIdPorPlayerId(Guid playerId)
+        public async Task<Guid> ObterCassinoIdPorPlayerId(Guid playerId)
         {
             var cassinoId = await Db.Player.AsNoTracking()
                 .Where(p => p.Id == playerId)

@@ -69,32 +69,39 @@ namespace GameMasterEnterprise.Service.Services
             }
         }
 
-        public async Task<Guid?> ObterPlayerIdPorToken(string Token)
+        public async Task<Guid> ObterPlayerIdPorToken(string Token)
         {
             var id = await _playerRepository.ObterPorToken(Token);
 
             if (id == null)
             {
-                Notificar("Cassino não encontrado.");
-                return null;
+                Notificar("Player não encontrado.");
+                return Guid.Empty;
             }
 
             return id.Id;
         }
-        public async Task<Guid?> ObterCassinoIdPorPlayerId(Guid idPlayer)
+        public async Task<Guid> ObterCassinoIdPorPlayerId(Guid idPlayer)
         {
-            var id = await _playerRepository.ObterCassinoIdPorPlayerId(idPlayer);
-
-            if (id == null)
+            try
             {
-                Notificar("Cassino não encontrado.");
-                return null;
+                var jogador = await _playerRepository.ObterPorId(idPlayer);
+
+                if (jogador == null)
+                {
+                    Notificar("Cassino não encontrado para o jogador.");
+                    return Guid.Empty; // Retorna um Guid com todos os bytes definidos como zero.
+                }
+
+                return jogador.CassinoId;
             }
-
-            return id.Id;
+            catch (Exception ex)
+            {
+                // Log: Capturar exceções para diagnóstico posterior.
+                // Log.Error($"Ocorreu um erro ao obter o cassino por ID do jogador: {ex}");
+                return Guid.Empty; // Retorna um Guid com todos os bytes definidos como zero em caso de exceção.
+            }
         }
-
-
         public async Task<IEnumerable<Player>> ObterTodosPlayers()
         {
             return await _playerRepository.ObterTodos();

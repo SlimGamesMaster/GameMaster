@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OyVwv7RSTD68ioJRWFbc9LNBKLJ6EjOO29hbCf6wiWHzsDkfcHHWSv97RnUaOAHQLjp0J2N/bJfMRKFIzg3/fg==",
+  "dgSpecHash": "xFY+meOJ0yGy6Cb32xacfN5qSmoRqOeHlJbcRyAncA7tRZLfS663CFeyZdQqhTnCr0Ae2Bg6LkYN7arsAV9yrA==",
   "success": true,
   "projectFilePath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
   "expectedPackageFiles": [
@@ -92,7 +92,7 @@
     "C:\\Users\\Eduardo\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\netstandard.library\\2.0.0-preview1-25301-01\\netstandard.library.2.0.0-preview1-25301-01.nupkg.sha512",
-    "C:\\Users\\Eduardo\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Eduardo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\portable.bouncycastle\\1.8.1.3\\portable.bouncycastle.1.8.1.3.nupkg.sha512",
     "C:\\Users\\Eduardo\\.nuget\\packages\\prometheus-net\\4.1.1\\prometheus-net.4.1.1.nupkg.sha512",

@@ -8,6 +8,7 @@ using GameMasterEnterprise.API.Models.Response.Correct.Base;
 using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
 using GameMasterEnterprise.Service.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -118,6 +119,19 @@ namespace Ipet.API.Controllers
             return await _masterService.ConsultaSaldoJogador(tokenUsuario);
         }
 
+        [AllowAnonymous]
+        [HttpGet("obter-sessao")]
+        public async Task<ActionResult<Cassino>> ObterSessao(Guid sessaoId)
+        {
+            var cassino = await _sessaoService.ObterSessao(sessaoId);
+
+            if (cassino == null)
+            {
+                return NotFound("Sessao não encontrado.");
+            }
+
+            return Ok(cassino);
+        }
     }
 }
 

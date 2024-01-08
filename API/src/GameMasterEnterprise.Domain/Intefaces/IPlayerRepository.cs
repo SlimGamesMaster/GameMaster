@@ -4,7 +4,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
 {
     public interface IPlayerRepository : IRepository<Player>
     {
-        Task<Guid?> ObterCassinoIdPorPlayerId(Guid playerId);
+        Task<Guid> ObterCassinoIdPorPlayerId(Guid playerId);
         Task<IEnumerable<Player>> ObterPlayersPorCassinoId(Guid cassinoId);
         Task<Player> ObterPorNome(string nome);
         Task<Player> ObterPorToken(string nome);
