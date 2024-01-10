@@ -41,7 +41,7 @@ namespace Ipet.API.Controllers
             _mapper = mapper;
         }
         [AllowAnonymous]
-        [HttpPost("cadastra-cassino")]
+        [HttpPost("cassino/cadastra-cassino")]
         public async Task<ActionResult> CriarCassino(CassinoViewModel cassino)
         {
 
@@ -52,7 +52,7 @@ namespace Ipet.API.Controllers
 
         }
         [AllowAnonymous]
-        [HttpGet("obter-cassino")]
+        [HttpGet("cassino/obter-cassino")]
         public async Task<ActionResult<Cassino>> ObterCassino(Guid cassinoId)
         {
             var cassino = await _cassinoService.ObterCassino(cassinoId);
@@ -65,7 +65,7 @@ namespace Ipet.API.Controllers
             return Ok(cassino);
         }
         [AllowAnonymous]
-        [HttpPut("atualizar-cassino/{cassinoId}")]
+        [HttpPut("cassino/atualizar-cassino/{cassinoId}")]
         public async Task<ActionResult> AtualizarCassino(Guid cassinoId, CassinoViewModel cassinoNovo)
         {
             await _cassinoService.AtualizarCassino(cassinoId, _mapper.Map<Cassino>(cassinoNovo));
@@ -74,7 +74,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpDelete("remover-cassino/{cassinoId}")]
+        [HttpDelete("cassino/remover-cassino/{cassinoId}")]
         public async Task<ActionResult> RemoverCassino(Guid cassinoId)
         {
             await _cassinoService.RemoverCassino(cassinoId);
@@ -82,7 +82,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpGet("obter-todos-cassinos")]
+        [HttpGet("cassino/obter-todos-cassinos")]
         public async Task<ActionResult<IEnumerable<CassinoViewModel>>> ObterTodosCassinos()
         {
             var cassinos = await _cassinoService.ObterTodosCassinos();

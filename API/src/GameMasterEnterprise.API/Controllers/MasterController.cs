@@ -61,7 +61,7 @@ namespace Ipet.API.Controllers
             _mapper = mapper;
         }
         [AllowAnonymous]
-        [HttpPost("abrir-jogo")]
+        [HttpPost("master/abrir-jogo")]
         public async Task<IActionResult> RecebeDados(MasterViewModel master)
         {
 
@@ -112,20 +112,20 @@ namespace Ipet.API.Controllers
 
                 
         }
-        [HttpGet("consulta-saldo")]
+        [HttpGet("master/consulta-saldo")]
         public async Task<bool> ConsultaSaldo (string tokenUsuario)
         {         
             return await _masterService.ConsultaSaldoJogador(tokenUsuario);
         }
         [AllowAnonymous]
-        [HttpPost("transacao")]
+        [HttpPost("master/transacao")]
         public async Task<bool> RealizaTransacao(TransacaoViewModel transacaoViewModel)
         {
             return await _masterService.RealizaTransicao(transacaoViewModel.SessaoId, transacaoViewModel.Operacao, transacaoViewModel.Total);
         }
 
         [AllowAnonymous]
-        [HttpGet("obter-sessao")]
+        [HttpGet("master/obter-sessao")]
         public async Task<ActionResult<Cassino>> ObterSessao(Guid sessaoId)
         {
             var cassino = await _sessaoService.ObterSessaoAtiva(sessaoId);
@@ -139,7 +139,7 @@ namespace Ipet.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("finalizar-sessao")]
+        [HttpGet("master/finalizar-sessao")]
         public async Task<ActionResult> FinalizarSessao(Guid sessaoId)
         {
 

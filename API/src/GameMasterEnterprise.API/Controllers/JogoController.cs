@@ -53,7 +53,7 @@ namespace Ipet.API.Controllers
             _mapper = mapper;
         }
         [AllowAnonymous]
-        [HttpPost("cadastrar-jogo")]
+        [HttpPost("jogo/cadastrar-jogo")]
         public async Task<ActionResult> CriarJogo(JogoViewModel jogo)
         {
 
@@ -64,7 +64,7 @@ namespace Ipet.API.Controllers
 
         }
         [AllowAnonymous]
-        [HttpGet("obter-Jogoo")]
+        [HttpGet("jogo/obter-Jogoo")]
         public async Task<ActionResult<Jogo>> ObterJogo(Guid JogoId)
         {
             var Jogo = await _jogoService.ObterJogo(JogoId);
@@ -77,7 +77,7 @@ namespace Ipet.API.Controllers
             return Ok(Jogo);
         }
         [AllowAnonymous]
-        [HttpPut("atualizar-jogo/{jogoId}")]
+        [HttpPut("jogo/atualizar-jogo/{jogoId}")]
         public async Task<ActionResult> AtualizarJogo(Guid jogoId, JogoViewModel jogoNovo)
         {
             await _jogoService.AtualizarJogo(jogoId, _mapper.Map<Jogo>(jogoNovo));
@@ -86,7 +86,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpDelete("remover-jogo/{jogoId}")]
+        [HttpDelete("jogo/remover-jogo/{jogoId}")]
         public async Task<ActionResult> Removerjogo(Guid jogoId)
         {
             await _jogoService.RemoverJogo(jogoId);
@@ -94,7 +94,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpGet("obter-todos-jogos")]
+        [HttpGet("jogo/obter-todos-jogos")]
         public async Task<ActionResult<IEnumerable<JogoViewModel>>> ObterTodosJogos()
         {
             var jogos = await _jogoService.ObterTodosJogos();

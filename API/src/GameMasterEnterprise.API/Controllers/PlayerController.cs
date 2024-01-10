@@ -45,7 +45,7 @@ namespace Ipet.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("obter-player")]
+        [HttpGet("player/obter-player")]
         public async Task<ActionResult<PlayerViewModel>> ObterPlayer(Guid playerId)
         {
             var player = await _playerService.ObterPlayer(playerId);
@@ -58,7 +58,7 @@ namespace Ipet.API.Controllers
             return Ok(player);
         }
         [AllowAnonymous]
-        [HttpGet("obter-saldo-player")]
+        [HttpGet("player/obter-saldo-player")]
         public async Task<ActionResult<PlayerSaldoViewModel>> ObterSaldoPlayer(Guid playerId)
         {
             var player = await _playerSaldoService.ObterPlayerSaldo(playerId);
@@ -71,7 +71,7 @@ namespace Ipet.API.Controllers
             return Ok(player);
         }
         [AllowAnonymous]
-        [HttpPut("atualizar-player/{playerId}")]
+        [HttpPut("player/atualizar-player/{playerId}")]
         public async Task<ActionResult> Atualizarplayer(Guid playerId, PlayerViewModel playerNovo)
         {
             await _playerService.AtualizarPlayer(playerId, _mapper.Map<Player>(playerNovo));
@@ -80,7 +80,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpDelete("remover-player/{playerId}")]
+        [HttpDelete("player/remover-player/{playerId}")]
         public async Task<ActionResult> Removerplayer(Guid playerId)
         {
             await _playerService.RemoverPlayer(playerId);
@@ -88,7 +88,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         [AllowAnonymous]
-        [HttpGet("obter-todos-players")]
+        [HttpGet("player/obter-todos-players")]
         public async Task<ActionResult<IEnumerable<PlayerViewModel>>> ObterTodosplayers()
         {
             var players = await _playerService.ObterTodosPlayers();

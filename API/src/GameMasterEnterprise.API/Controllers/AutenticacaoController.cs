@@ -43,7 +43,7 @@ namespace GameMasterEnterprise.API.Controllers
 
         //[ClaimsAuthorize("Admin", "1")]
         [AllowAnonymous]
-        [HttpPost("nova-conta")]
+        [HttpPost("conta/nova-conta")]
         public async Task<ActionResult> Registrar(RegisterUserViewModel Input)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
@@ -77,7 +77,7 @@ namespace GameMasterEnterprise.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("logar")]
+        [HttpPost("conta/logar")]
         public async Task<ActionResult> Login(LoginUserViewModel loginUser)
         {
             if (!ModelState.IsValid) return CustomResponse(ModelState);
@@ -100,7 +100,7 @@ namespace GameMasterEnterprise.API.Controllers
         }
 
         [Authorize]
-        [HttpPost("test-token")]
+        [HttpPost("conta/test-token")]
         public async Task<ActionResult<bool>> Test()
         {
 

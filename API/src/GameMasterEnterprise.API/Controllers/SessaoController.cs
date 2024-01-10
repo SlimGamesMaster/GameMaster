@@ -63,7 +63,7 @@ namespace Ipet.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("obter-todas-sessoes")]
+        [HttpGet("sessao/obter-todas-sessoes")]
         public async Task<ActionResult<ICollection<SessaoViewModel>>> ObterTodasSessoes()
         {
             var sessoes = await _sessaoService.ObterTodos();
