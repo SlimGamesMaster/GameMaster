@@ -52,7 +52,7 @@ namespace GameMasterEnterprise.Service.Services
             var cassinoId = await _cassinoService.ObterCassinoIdPorToken(tokenCassino);
             return (Guid)cassinoId;
         }
-        public async Task<Guid> VerificarCodigoJogo(int codigoJogo)
+        public async Task<Guid> VerificarCodigoJogo(string codigoJogo)
         {
             var jogo = await _jogoService.ObterJogoPorCodigo(codigoJogo);
             return (Guid)jogo;
@@ -105,7 +105,7 @@ namespace GameMasterEnterprise.Service.Services
                     CassinoId = cassinoId,
                     JogoId = jogoId,
                     PlayerId = playerId,
-                    Situacao = 0,
+                    ativo = true
                 };
 
                 // Chame um método do seu serviço ou repositório para criar a sessão
@@ -178,10 +178,7 @@ namespace GameMasterEnterprise.Service.Services
         }
         public async Task<bool> RealizaTransicao(Guid IdSessao, string operacao, float total)
         {
-            if(_sessaoRepository.ObterPorId(IdSessao) == null)
-            {
-                throw new InvalidOperationException("Sessão Inexistente");
-            }
+            await _sessaoService.ObterSessaoAtiva(IdSessao);
 
             var cassinoId = await _sessaoRepository.ObterCassinoIdPorSessaoId(IdSessao);
             var urlCassino = await _cassinoRepository.ObterUrlCassino(cassinoId);

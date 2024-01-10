@@ -34,6 +34,9 @@ namespace GameMasterEnterprise.API.Configuration
             services.AddScoped<ISessaoService, SessaoService>();
             services.AddScoped<ISessaoRepository, SessaoRepository>();
 
+            services.AddScoped<IHistoricoSessaoService, HistoricoSessaoService>();
+            services.AddScoped<IHistoricoSessaoRepository, HistoricoSessaoRepository>();
+
             services.AddScoped<IMasterService, MasterService>();
 
             services.AddScoped<INotificador, Notificador>();

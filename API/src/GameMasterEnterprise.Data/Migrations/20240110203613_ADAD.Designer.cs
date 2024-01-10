@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameMasterEnterprise.Data.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20240110180658_Testing")]
-    partial class Testing
+    [Migration("20240110203613_ADAD")]
+    partial class ADAD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,14 +47,41 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.ToTable("Cassino", (string)null);
                 });
 
+            modelBuilder.Entity("GameMasterEnterprise.Domain.Models.HistoricoSessao", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Operacao")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("SessaoId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<float>("Valor")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SessaoId");
+
+                    b.ToTable("HistoricoSessao", (string)null);
+                });
+
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Jogo", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("Codigo")
-                        .HasColumnType("int");
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime(6)");
@@ -130,6 +157,9 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<DateTime?>("DataFinalizacao")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<int>("Dificuldade")
                         .HasColumnType("int");
 
@@ -139,11 +169,8 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.Property<Guid>("PlayerId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("Situacao")
-                        .HasColumnType("int");
-
-                    b.Property<float?>("Valor")
-                        .HasColumnType("float");
+                    b.Property<bool>("ativo")
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -154,6 +181,15 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("Sessao", (string)null);
+                });
+
+            modelBuilder.Entity("GameMasterEnterprise.Domain.Models.HistoricoSessao", b =>
+                {
+                    b.HasOne("GameMasterEnterprise.Domain.Models.Sessao", "Sessao")
+                        .WithMany("HistoricoSessao")
+                        .HasForeignKey("SessaoId");
+
+                    b.Navigation("Sessao");
                 });
 
             modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Player", b =>
@@ -215,6 +251,11 @@ namespace GameMasterEnterprise.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Sessoes");
+                });
+
+            modelBuilder.Entity("GameMasterEnterprise.Domain.Models.Sessao", b =>
+                {
+                    b.Navigation("HistoricoSessao");
                 });
 #pragma warning restore 612, 618
         }

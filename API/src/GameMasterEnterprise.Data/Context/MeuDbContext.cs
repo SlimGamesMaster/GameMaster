@@ -16,6 +16,7 @@ namespace GameMasterEnterprise.Data.Context
         public DbSet<Player> Player { get; set; }
         public DbSet<PlayerSaldo> PlayerSaldo { get; set; }
         public DbSet<Sessao> Sessao { get; set; }
+        public DbSet<HistoricoSessao> HistoricoSessao { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var property in modelBuilder.Model.GetEntityTypes()

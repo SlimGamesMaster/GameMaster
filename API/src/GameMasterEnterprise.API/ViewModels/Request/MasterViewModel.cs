@@ -15,7 +15,7 @@ namespace GameMasterEnterprise.API.Models.Request
         public string TokenCassino { get; set; }
 
         [Required(ErrorMessage = "O campo GameCode é obrigatório.")]
-        public int CodigoJogo { get; set; }
+        public string CodigoJogo { get; set; }
 
         [Required(ErrorMessage = "O campo Lang é obrigatório.")]
         public int Dificuldade { get; set; }

@@ -41,6 +41,24 @@ namespace GameMasterEnterprise.Service.Services
             }
             return Sessao;
         }
+        public async Task<Sessao> ObterSessaoAtiva(Guid SessaoId)
+        {
+            var Sessao = await _SessaoRepository.ObterPorId(SessaoId);
+            Sessao.Cassino = await _cassinoRepository.ObterPorId(Sessao.CassinoId);
+            Sessao.Jogo = await _jogoRepository.ObterPorId(Sessao.JogoId);
+            Sessao.Player = await _playerRepository.ObterPorId(Sessao.PlayerId);
+
+
+            if (Sessao == null)
+            {
+                throw new InvalidOperationException("Sessao Inexistente");
+            }
+            if(Sessao.ativo == false)
+            {
+                throw new InvalidOperationException("Sessao já Finalizada");
+            }
+            return Sessao;
+        }
         public async Task<Guid> CriarSessao(Sessao sessao)
         {
             if (sessao != null)
@@ -84,7 +102,8 @@ namespace GameMasterEnterprise.Service.Services
             {
                 throw new InvalidOperationException("Sessao não encontrado.");
             }
-             Sessao.Situacao = 1;       
+             Sessao.ativo = false;
+            Sessao.DataFinalizacao = DateTime.Now;
             await _SessaoRepository.Atualizar(Sessao);
         }
         public async Task AtualizarSessao(Guid SessaoId, Sessao SessaoNovo)

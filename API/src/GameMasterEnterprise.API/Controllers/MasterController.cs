@@ -128,7 +128,7 @@ namespace Ipet.API.Controllers
         [HttpGet("obter-sessao")]
         public async Task<ActionResult<Cassino>> ObterSessao(Guid sessaoId)
         {
-            var cassino = await _sessaoService.ObterSessao(sessaoId);
+            var cassino = await _sessaoService.ObterSessaoAtiva(sessaoId);
 
             if (cassino == null)
             {

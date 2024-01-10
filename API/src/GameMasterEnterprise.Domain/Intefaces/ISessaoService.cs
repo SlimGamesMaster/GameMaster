@@ -10,6 +10,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task Dispose();
         Task FinalizarSessao(Guid SessaoId);
         Task<Sessao> ObterSessao(Guid SessaoId);
+        Task<Sessao> ObterSessaoAtiva(Guid SessaoId);
         Task<IEnumerable<Sessao>> ObterTodos();
         Task RemoverSessao(Guid SessaoId);
     }

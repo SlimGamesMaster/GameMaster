@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GameMasterEnterprise.Data.Migrations
 {
-    public partial class Initial : Migration
+    public partial class ADAD : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,7 +38,8 @@ namespace GameMasterEnterprise.Data.Migrations
                     Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Nome = table.Column<string>(type: "varchar(100)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Codigo = table.Column<int>(type: "int", nullable: false),
+                    Codigo = table.Column<string>(type: "varchar(100)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     DataCadastro = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -99,6 +100,8 @@ namespace GameMasterEnterprise.Data.Migrations
                     JogoId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     PlayerId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     CassinoId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    DataFinalizacao = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    ativo = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
@@ -121,6 +124,33 @@ namespace GameMasterEnterprise.Data.Migrations
                         principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "HistoricoSessao",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    SessaoId = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    Operacao = table.Column<string>(type: "varchar(100)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Valor = table.Column<float>(type: "float", nullable: false),
+                    DataCadastro = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HistoricoSessao", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HistoricoSessao_Sessao_SessaoId",
+                        column: x => x.SessaoId,
+                        principalTable: "Sessao",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HistoricoSessao_SessaoId",
+                table: "HistoricoSessao",
+                column: "SessaoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Player_CassinoId",
@@ -151,6 +181,9 @@ namespace GameMasterEnterprise.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "HistoricoSessao");
+
             migrationBuilder.DropTable(
                 name: "PlayerSaldo");
 
