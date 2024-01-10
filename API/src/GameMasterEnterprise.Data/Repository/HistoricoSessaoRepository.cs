@@ -11,6 +11,11 @@ namespace GameMasterEnterprise.Data.Repository
     {
         public HistoricoSessaoRepository(MeuDbContext context) : base(context) { }
 
-
+        public async Task<List<HistoricoSessao>> ObterSaldosPorSessaoId(Guid sessaoId)
+        {
+            return await Db.HistoricoSessao.AsNoTracking()
+                .Where(p => p.SessaoId == sessaoId)
+                .ToListAsync();
+        }
     }
 }

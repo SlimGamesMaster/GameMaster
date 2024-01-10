@@ -10,7 +10,7 @@ namespace GameMasterEnterprise.Domain.Models
         public string TokenJogador { get; set; }
         public string TokenCassino { get; set; }
         public string ProviderCode { get; set; }
-        public int CodigoJogo { get; set; }
+        public string CodigoJogo { get; set; }
 
         public int Dificuldade { get; set; }
     }

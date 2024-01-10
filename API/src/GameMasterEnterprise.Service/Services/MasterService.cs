@@ -223,7 +223,7 @@ namespace GameMasterEnterprise.Service.Services
                 {
                     SessaoId = IdSessao,
                     Operacao = operacao,
-                    Valor = saldo,
+                    Valor = total,
                 };
 
                 await _historicoSessaoService.CriarHistoricoSessao(transacao);

@@ -42,7 +42,7 @@ namespace GameMasterEnterprise.Service.Services
             {
                 throw new InvalidOperationException("Sessao Inexistente");
             }
-            if (historicosessao != null)
+            if (historicosessao == null)
             {
 
                 Notificar("Favor passar os parametros corretamente.");

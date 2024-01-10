@@ -11,14 +11,20 @@ namespace GameMasterEnterprise.Service.Services
         private readonly IPlayerRepository _playerRepository;
         private readonly ICassinoRepository _cassinoRepository;
         private readonly IJogoRepository _jogoRepository;
+        private readonly IHistoricoSessaoService _historicoSessaoService;
+        private readonly IHistoricoSessaoRepository _historicoSessaoRepository;
 
         public SessaoService(ISessaoRepository SessaoRepository,
             IPlayerRepository PlayerRepository,
+            IHistoricoSessaoService historicoSessaoService,
+            IHistoricoSessaoRepository historicoSessaoRepository,
             ICassinoRepository cassinoRepository,
             IJogoRepository jogoRepository,
             INotificador notificador, HttpClient httpClient)
             : base(notificador, httpClient)
         {
+            _historicoSessaoService = historicoSessaoService;
+            _historicoSessaoRepository = historicoSessaoRepository;
             _SessaoRepository = SessaoRepository;
             _playerRepository = PlayerRepository;
             _jogoRepository = jogoRepository;
@@ -39,6 +45,11 @@ namespace GameMasterEnterprise.Service.Services
                 Notificar("Sessao não encontrado.");
                 return null;
             }
+
+            var historicos = await _historicoSessaoRepository.ObterSaldosPorSessaoId(SessaoId);
+
+            Sessao.HistoricoSessao = historicos;
+
             return Sessao;
         }
         public async Task<Sessao> ObterSessaoAtiva(Guid SessaoId)
@@ -48,15 +59,23 @@ namespace GameMasterEnterprise.Service.Services
             Sessao.Jogo = await _jogoRepository.ObterPorId(Sessao.JogoId);
             Sessao.Player = await _playerRepository.ObterPorId(Sessao.PlayerId);
 
-
             if (Sessao == null)
             {
                 throw new InvalidOperationException("Sessao Inexistente");
             }
-            if(Sessao.ativo == false)
-            {
-                throw new InvalidOperationException("Sessao já Finalizada");
-            }
+            //if(Sessao.ativo == false)ae0a636c-2315-45d0-a2d4-dc71d60ac669
+            //{
+            //    throw new InvalidOperationException("Sessao já Finalizada");
+            //}
+
+
+            var historicos = await _historicoSessaoRepository.ObterSaldosPorSessaoId(SessaoId);
+
+            Sessao.HistoricoSessao = historicos;
+
+
+
+
             return Sessao;
         }
         public async Task<Guid> CriarSessao(Sessao sessao)
