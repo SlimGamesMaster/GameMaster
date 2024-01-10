@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameMasterEnterprise.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+73bb166a09a7b2635b411e893431f0fd56462529")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2bba457003ce65545f0f3dc8381a7a3758a07f3")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameMasterEnterprise.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameMasterEnterprise.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

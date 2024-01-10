@@ -8,8 +8,8 @@ namespace GameMasterEnterprise.Service.Services
     public class PlayerService : BaseService, IPlayerService
     {
         private readonly IPlayerRepository _playerRepository;
-        public PlayerService(IPlayerRepository playerRepository, INotificador notificador)
-            : base(notificador)
+        public PlayerService(IPlayerRepository playerRepository, INotificador notificador, HttpClient httpClient)
+            : base(notificador, httpClient)
         {
             _playerRepository = playerRepository;
         }

@@ -16,8 +16,8 @@ namespace GameMasterEnterprise.Service.Services
             IPlayerRepository PlayerRepository,
             ICassinoRepository cassinoRepository,
             IJogoRepository jogoRepository,
-            INotificador notificador)
-            : base(notificador)
+            INotificador notificador, HttpClient httpClient)
+            : base(notificador, httpClient)
         {
             _SessaoRepository = SessaoRepository;
             _playerRepository = PlayerRepository;

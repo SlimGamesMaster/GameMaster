@@ -8,8 +8,8 @@ namespace GameMasterEnterprise.Service.Services
     public class PlayerSaldoService : BaseService, IPlayerSaldoService
     {
         private readonly IPlayerSaldoRepository _PlayerSaldoRepository;
-        public PlayerSaldoService(IPlayerSaldoRepository PlayerSaldoRepository, INotificador notificador)
-            : base(notificador)
+        public PlayerSaldoService(IPlayerSaldoRepository PlayerSaldoRepository, INotificador notificador, HttpClient httpClient)
+            : base(notificador, httpClient)
         {
             _PlayerSaldoRepository = PlayerSaldoRepository;
         }
@@ -24,21 +24,30 @@ namespace GameMasterEnterprise.Service.Services
             }
             return PlayerSaldoPorId;
         }
+        public async Task<Guid> ObterPorPlayerPlayerSaldo(Guid playerId)
+        {
+            var PlayerSaldo = await _PlayerSaldoRepository.ObterModelSaldoPorPlayerId(playerId);
+
+            if (PlayerSaldo == null)
+            {
+                var saldo = new PlayerSaldo
+                {
+                    PlayerId = playerId,
+                    Saldo = 1
+                };
+
+                var saldoId = await _PlayerSaldoRepository.GerarSaldo(saldo);
+                return saldoId;
+            }
+            return Guid.Empty;
+        }
         public async Task CriarPlayerSaldo(PlayerSaldo PlayerSaldo)
         {
             if (PlayerSaldo != null)
             {
                 var PlayerSaldoPorId = await _PlayerSaldoRepository.ObterPorId(PlayerSaldo.Id);
 
-                if (PlayerSaldoPorId != null)
-                {
-                    Notificar("PlayerSaldo já existente.");
-                    return;
-                }
-                else
-                {
-                    await _PlayerSaldoRepository.Adicionar(PlayerSaldo);
-                }
+             
             }
             else
             {
@@ -46,11 +55,8 @@ namespace GameMasterEnterprise.Service.Services
 
             }
         }
-        public async Task<IEnumerable<PlayerSaldo>> ObterTodosPlayerSaldos()
-        {
-            return await _PlayerSaldoRepository.ObterTodos();
-        }
-        public async Task AtualizarPlayerSaldo(Guid PlayerSaldoId, PlayerSaldo playerSaldoNovo)
+        public async Task<IEnumerable<PlayerSaldo>> ObterTodosPlayerSaldos() => await _PlayerSaldoRepository.ObterTodos();
+        public async Task AtualizarPlayerSaldo(Guid PlayerSaldoId, float saldoNovo)
         {
             var playerSaldo = await _PlayerSaldoRepository.ObterPorId(PlayerSaldoId);
 
@@ -60,12 +66,7 @@ namespace GameMasterEnterprise.Service.Services
                 return;
             }
 
-            if(playerSaldoNovo.Saldo == playerSaldo.Saldo) {
-                Notificar("Dados Repetidos.");
-                return;
-            }
-
-            playerSaldo.Saldo = playerSaldoNovo.Saldo;
+            playerSaldo.Saldo = saldoNovo;
             await _PlayerSaldoRepository.Atualizar(playerSaldo);
         }
         public async Task RemoverPlayerSaldo(Guid PlayerSaldoId)

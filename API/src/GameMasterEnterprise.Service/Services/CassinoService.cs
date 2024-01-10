@@ -2,6 +2,7 @@
 using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
 using GameMasterEnterprise.Service.Services;
+using System.Net.Http;
 
 namespace GameMasterEnterprise.Service.Services
 {
@@ -9,8 +10,8 @@ namespace GameMasterEnterprise.Service.Services
     {
         private readonly ICassinoRepository _cassinoRepository;
 
-        public CassinoService(ICassinoRepository cassinoRepository, INotificador notificador)
-            : base(notificador)
+        public CassinoService(ICassinoRepository cassinoRepository, INotificador notificador, HttpClient httpClient)
+            : base(notificador, httpClient)
         {
             _cassinoRepository = cassinoRepository;
         }

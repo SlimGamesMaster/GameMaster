@@ -3,16 +3,21 @@ using FluentValidation.Results;
 using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
 using GameMasterEnterprise.Domain.Notificacoes;
+using System.Text.Json;
+using System.Text;
+using System.Net.Http;
 
 namespace GameMasterEnterprise.Service.Services
 {
     public abstract class BaseService
     {
+        private readonly HttpClient _httpClient;
         private readonly INotificador _notificador;
 
-        protected BaseService(INotificador notificador)
+        protected BaseService(INotificador notificador, HttpClient httpClient)
         {
             _notificador = notificador;
+            _httpClient = httpClient;
         }
 
         protected void Notificar(ValidationResult validationResult)
@@ -68,5 +73,54 @@ namespace GameMasterEnterprise.Service.Services
                 return null;
             }
         }
+
+       public async Task<T> GetAsync<T>(string url)
+       {
+                HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+                return await HandleResponse<T>(response);
+       }
+
+       public async Task<T> PostAsync<T>(string url, object body)
+            {
+                string jsonBody = JsonSerializer.Serialize(body);
+                HttpContent content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PostAsync(url, content);
+
+                return await HandleResponse<T>(response);
+            }
+
+       public async Task<T> PutAsync<T>(string url, object body)
+            {
+                string jsonBody = JsonSerializer.Serialize(body);
+                HttpContent content = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PutAsync(url, content);
+
+                return await HandleResponse<T>(response);
+            }
+
+       public async Task<T> DeleteAsync<T>(string url)
+            {
+                HttpResponseMessage response = await _httpClient.DeleteAsync(url);
+
+                return await HandleResponse<T>(response);
+            }
+
+       private async Task<T> HandleResponse<T>(HttpResponseMessage response)
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    return JsonSerializer.Deserialize<T>(jsonResponse);
+                }
+                else
+                {
+                    // Lidar com erros, lançar exceção ou retornar um objeto com informações de erro
+                    throw new HttpRequestException($"Erro na requisição. Código de status: {response.StatusCode}");
+                }
+            }
+        
     }
 }

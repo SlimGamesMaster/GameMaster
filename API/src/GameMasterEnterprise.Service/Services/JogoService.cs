@@ -9,8 +9,8 @@ namespace GameMasterEnterprise.Service.Services
     {
         private readonly IJogoRepository _JogoRepository;
 
-        public JogoService(IJogoRepository JogoRepository, INotificador notificador)
-            : base(notificador)
+        public JogoService(IJogoRepository JogoRepository, INotificador notificador, HttpClient httpClient)
+            : base(notificador, httpClient)
         {
             _JogoRepository = JogoRepository;
         }

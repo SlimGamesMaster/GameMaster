@@ -11,15 +11,18 @@ namespace GameMasterEnterprise.Service.Services
         private readonly IJogoService _jogoService;
         private readonly ICassinoService _cassinoService;
         private readonly IPlayerService _playerService;
+        private readonly IPlayerSaldoService _playerSaldoService;
         private readonly ISessaoService _sessaoService;
 
         private readonly IJogoRepository _jogoRepository;
         private readonly ICassinoRepository _cassinoRepository;
         private readonly IPlayerRepository _playerRepository;
+        private readonly IPlayerSaldoRepository _playerSaldoRepository;
         private readonly ISessaoRepository _sessaoRepository;
 
         public MasterService(
             INotificador notificador,
+            IPlayerSaldoRepository playerSaldoRepository,
             IJogoService jogoService,
             ICassinoService cassinoService,
             IPlayerService playerService,
@@ -27,13 +30,14 @@ namespace GameMasterEnterprise.Service.Services
             IJogoRepository jogoRepository,
             ICassinoRepository cassinoRepository,
             IPlayerRepository playerRepository,
-            ISessaoRepository sessaoRepository)
-            : base(notificador)
+            ISessaoRepository sessaoRepository, HttpClient httpClient)
+            : base(notificador, httpClient)
         {
             _jogoService = jogoService;
             _cassinoService = cassinoService;
             _playerService = playerService;
             _sessaoService = sessaoService;
+            _playerSaldoRepository = playerSaldoRepository;
 
             _jogoRepository = jogoRepository;
             _cassinoRepository = cassinoRepository;
@@ -118,50 +122,70 @@ namespace GameMasterEnterprise.Service.Services
         public async Task<bool> ConsultaSaldoJogador(string token)
         {
             var idPlayer = await _playerService.ObterPlayerIdPorToken(token);
-            if (idPlayer == null) { return false; }
 
-            var idCassino = await _playerService.ObterCassinoIdPorPlayerId(idPlayer);
-            var urlCassino = await _cassinoRepository.ObterUrlCassino(idCassino);
-
-            string url = "https://bigluck.bet/apiteste";
-
-            string corpoRequisicao = @"{
-        ""method"": ""user_balance"",
-        ""agent_token"": ""59963150456c5037bb32f60af1952ff6"",
-        ""user_code"": ""teste""
-    }";
-            using (HttpClient httpClient = new HttpClient())
+            if (idPlayer == Guid.Empty || idPlayer == null)
             {
-                HttpContent conteudo = new StringContent(corpoRequisicao, Encoding.UTF8, "application/json");
+                throw new InvalidOperationException("Player não encontrado.");
+            }
+            else
+            {
 
-                try
+                var teste = await _playerSaldoService.ObterPorPlayerPlayerSaldo(idPlayer);
+                float? saldoAtual = await _playerSaldoRepository.ObterSaldoPorPlayerId(idPlayer);
+                if (saldoAtual == null)
                 {
-                    HttpResponseMessage resposta = await httpClient.PostAsync(url, conteudo);
-
-                    if (resposta.IsSuccessStatusCode)
+                    var saldo = new PlayerSaldo
                     {
+                        PlayerId = idPlayer,
+                        Saldo = 1
+                    };
 
-                        string respostaJson = await resposta.Content.ReadAsStringAsync();
-                        Console.WriteLine("Resposta do servidor:");
-                        Console.WriteLine(respostaJson);
-
-                        var respostaObjeto = JsonSerializer.Deserialize<JsonElement>(respostaJson);
-
-                        return respostaObjeto.GetProperty("user_balance").GetInt32() != 0;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Erro na requisição. Código de status: {resposta.StatusCode}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ocorreu um erro durante a requisição: {ex.Message}");
+                    await _playerSaldoService.CriarPlayerSaldo(saldo);
                 }
             }
 
-            return true;
+            var idCassino = await _playerService.ObterCassinoIdPorPlayerId(idPlayer);
+            var urlCassino = await _cassinoRepository.ObterUrlCassino(idCassino);
+            var tokenCassino = await _cassinoRepository.ObterTokenCassino(idCassino);
+            if (idCassino == Guid.Empty || urlCassino == null || tokenCassino ==null)
+            {
+                throw new InvalidOperationException("dados não encontrados.");
+            }
+
+
+
+            //string url = "https://bigluck.bet/apiteste";
+
+            var httpService = new HttpClient();
+
+            var requestBody = new
+            {
+                method = "user_balance",
+                agent_token = tokenCassino,
+                user_code = "teste"
+            };
+
+            try
+            {
+                var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
+                var saldoNaoZero = Convert.ToSingle(respostaObjeto.GetProperty("user_balance").GetInt32() != 0);
+
+                var idSaldo = await _playerSaldoRepository.ObterSaldoIdPorPlayerId(idPlayer);
+
+                await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldoNaoZero);
+
+                if(saldoNaoZero == 0)
+                {
+                    return false;
+                }
+                else return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+                throw;
+            }
+
         }
 
 

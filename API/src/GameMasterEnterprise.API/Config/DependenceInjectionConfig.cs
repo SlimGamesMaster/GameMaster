@@ -5,6 +5,7 @@ using GameMasterEnterprise.Domain.Notificacoes;
 using GameMasterEnterprise.Service.Services;
 using Ipet.API.Extensions;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
+using System.Net.Http;
 
 namespace GameMasterEnterprise.API.Configuration
 {
@@ -13,6 +14,7 @@ namespace GameMasterEnterprise.API.Configuration
         public static IServiceCollection ResolveDependencies(this IServiceCollection services)
         {
             services.AddScoped<INotificador, Notificador>();
+            services.AddScoped<HttpClient, HttpClient>();
             services.AddScoped<IUser, AspNetUser>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<MeuDbContext>();
