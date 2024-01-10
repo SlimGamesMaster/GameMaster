@@ -219,8 +219,15 @@ namespace GameMasterEnterprise.Service.Services
                 var saldo = userBalanceElement.GetInt32();
 
 
-                await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
-                
+                var transacao = new HistoricoSessao
+                {
+                    SessaoId = IdSessao,
+                    Operacao = operacao,
+                    Valor = saldo,
+                };
+
+                await _historicoSessaoService.CriarHistoricoSessao(transacao);
+
 
                 return saldoNaoZero;
             }
