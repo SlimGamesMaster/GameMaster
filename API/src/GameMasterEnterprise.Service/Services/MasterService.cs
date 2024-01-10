@@ -126,7 +126,7 @@ namespace GameMasterEnterprise.Service.Services
                 throw;
             }
         }
-        public async Task<bool> ConsultaSaldoJogador(string token)
+        public async Task<float> ConsultaSaldoJogador(string token)
         {
             var idPlayer = await _playerService.ObterPlayerIdPorToken(token);
 
@@ -172,7 +172,7 @@ namespace GameMasterEnterprise.Service.Services
 
                 await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
 
-                return saldoNaoZero;
+                return saldo;
             }
             catch (Exception ex)
             {

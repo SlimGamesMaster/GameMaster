@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameMasterEnterprise.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+758e658974cf8fdfdd74cef2f91e718164a74ec2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c46bdf39a83895ae7f3fbe05e9143c530807ad7e")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameMasterEnterprise.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameMasterEnterprise.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
