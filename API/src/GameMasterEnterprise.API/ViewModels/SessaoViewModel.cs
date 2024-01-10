@@ -14,7 +14,6 @@ namespace GameMasterEnterprise.API.ViewModels
         public Player Player { get; set; }
         public Guid CassinoId { get; set; }
         public Cassino Cassino { get; set; }
-        public float? Valor { get; set; }
         public int? Situacao { get; set; }
     }
 

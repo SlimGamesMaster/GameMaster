@@ -106,7 +106,6 @@ namespace GameMasterEnterprise.Service.Services
                     JogoId = jogoId,
                     PlayerId = playerId,
                     Situacao = 0,
-                    Valor = 0,
                 };
 
                 // Chame um método do seu serviço ou repositório para criar a sessão
@@ -177,8 +176,58 @@ namespace GameMasterEnterprise.Service.Services
             }
 
         }
+        public async Task<bool> RealizaTransicao(Guid IdSessao, string operacao, float total)
+        {
+            if(_sessaoRepository.ObterPorId(IdSessao) == null)
+            {
+                throw new InvalidOperationException("Sessão Inexistente");
+            }
+
+            var cassinoId = await _sessaoRepository.ObterCassinoIdPorSessaoId(IdSessao);
+            var urlCassino = await _cassinoRepository.ObterUrlCassino(cassinoId);
+
+            var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(IdSessao);
+            var tokenPlayer = await _playerRepository.ObterTokenJogador(playerId);
+            var idSaldo = await _playerSaldoService.ObterIdPlayerSaldo(playerId);
+
+            var jogoId = await _sessaoRepository.ObterJogoIdPorSessaoId(IdSessao);
+            
+            var tokenCassino = await _cassinoRepository.ObterTokenCassino(cassinoId);
+            var codigoJogo = await _jogoRepository.ObterCodigoJogo(jogoId);
+
+            var httpService = new HttpClient();
+
+            var requestBody = new
+            {
+                method = "transaction",
+                agent_token = tokenCassino,
+                user_code = tokenPlayer,
+                type = operacao,
+                amount = total,
+                game_code = codigoJogo
+
+            };
+            try
+            {
+                var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
+
+                var userBalanceElement = respostaObjeto.GetProperty("user_balance");
+
+                var saldoNaoZero = userBalanceElement.GetInt32() != 0;
+                var saldo = userBalanceElement.GetInt32();
 
 
+                await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
+
+                return saldoNaoZero;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+                throw;
+            }
+
+        }
 
 
 

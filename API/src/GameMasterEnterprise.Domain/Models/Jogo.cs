@@ -9,7 +9,7 @@ namespace GameMasterEnterprise.Domain.Models
     public class Jogo : Entity
     {
         public string Nome {  get; set; }
-        public int Codigo { get; set; }
+        public string Codigo { get; set; }
         public ICollection<Sessao>? Sessoes { get; set; }
     }
 }

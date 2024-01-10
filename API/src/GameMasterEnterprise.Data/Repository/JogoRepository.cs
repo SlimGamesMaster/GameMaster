@@ -15,7 +15,7 @@ namespace GameMasterEnterprise.Data.Repository
                 .FirstOrDefaultAsync(c => c.Nome == nome);
         }
 
-        public async Task<Jogo> ObterPorCodigo(int codigo)
+        public async Task<Jogo> ObterPorCodigo(string codigo)
         {
             return await Db.Jogo.AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Codigo == codigo);
@@ -27,6 +27,13 @@ namespace GameMasterEnterprise.Data.Repository
                 .FirstOrDefaultAsync(c => c.Id == id);
 
             return jogo?.Nome;
+        }
+        public async Task<string> ObterCodigoJogo(Guid id)
+        {
+            var jogo = await Db.Jogo.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            return jogo?.Codigo;
         }
 
 

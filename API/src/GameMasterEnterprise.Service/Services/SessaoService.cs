@@ -76,7 +76,7 @@ namespace GameMasterEnterprise.Service.Services
 
             return sessoes;
         }
-        public async Task FinalizarSessao(Guid SessaoId, float valor, bool status)
+        public async Task FinalizarSessao(Guid SessaoId)
         {
             var Sessao = await _SessaoRepository.ObterPorId(SessaoId);
 
@@ -84,9 +84,7 @@ namespace GameMasterEnterprise.Service.Services
             {
                 throw new InvalidOperationException("Sessao não encontrado.");
             }
-            Sessao.Valor = valor;
-            if(status == false) { Sessao.Situacao = 1; }
-            if (status == true) { Sessao.Situacao = 2; }         
+             Sessao.Situacao = 1;       
             await _SessaoRepository.Atualizar(Sessao);
         }
         public async Task AtualizarSessao(Guid SessaoId, Sessao SessaoNovo)

@@ -8,5 +8,6 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task<IEnumerable<Player>> ObterPlayersPorCassinoId(Guid cassinoId);
         Task<Player> ObterPorNome(string nome);
         Task<Player> ObterPorToken(string nome);
+        Task<string> ObterTokenJogador(Guid id);
     }
 }

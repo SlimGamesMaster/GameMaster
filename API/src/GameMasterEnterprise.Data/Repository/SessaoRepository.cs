@@ -15,7 +15,35 @@ namespace GameMasterEnterprise.Data.Repository
         {
             DbSet.Add(sessao);
             await Db.SaveChangesAsync();
-            return sessao.Id; // Retorna o ID após a adição
+            return sessao.Id;
+        }
+
+        public async Task<Guid> ObterPlayerIdPorSessaoId(Guid sessaoId)
+        {
+            var playerId = await Db.Sessao.AsNoTracking()
+                .Where(p => p.Id == sessaoId)
+                .Select(p => p.PlayerId)
+                .FirstOrDefaultAsync();
+
+            return playerId;
+        }
+        public async Task<Guid> ObterCassinoIdPorSessaoId(Guid sessaoId)
+        {
+            var cassinoId = await Db.Sessao.AsNoTracking()
+                .Where(p => p.Id == sessaoId)
+                .Select(p => p.CassinoId)
+                .FirstOrDefaultAsync();
+
+            return cassinoId;
+        }
+        public async Task<Guid> ObterJogoIdPorSessaoId(Guid sessaoId)
+        {
+            var jogoId = await Db.Sessao.AsNoTracking()
+                .Where(p => p.Id == sessaoId)
+                .Select(p => p.JogoId)
+                .FirstOrDefaultAsync();
+
+            return jogoId;
         }
     }
 }
