@@ -13,14 +13,17 @@ namespace GameMasterEnterprise.Service.Services
         private readonly IPlayerService _playerService;
         private readonly IPlayerSaldoService _playerSaldoService;
         private readonly ISessaoService _sessaoService;
-
+        private readonly IHistoricoSessaoService _historicoSessaoService;
         private readonly IJogoRepository _jogoRepository;
         private readonly ICassinoRepository _cassinoRepository;
         private readonly IPlayerRepository _playerRepository;
         private readonly IPlayerSaldoRepository _playerSaldoRepository;
         private readonly ISessaoRepository _sessaoRepository;
+        private readonly IHistoricoSessaoRepository _historicoSessaoRepository;
 
         public MasterService(
+            IHistoricoSessaoService historicoSessaoService,
+            IHistoricoSessaoRepository historicoSessaoRepository,
             INotificador notificador,
             IPlayerSaldoRepository playerSaldoRepository,
             IPlayerSaldoService playerSaldoService,
@@ -40,11 +43,13 @@ namespace GameMasterEnterprise.Service.Services
             _sessaoService = sessaoService;
             _playerSaldoRepository = playerSaldoRepository;
             _playerSaldoService = playerSaldoService;
+            _historicoSessaoService = historicoSessaoService;
 
             _jogoRepository = jogoRepository;
             _cassinoRepository = cassinoRepository;
             _playerRepository = playerRepository;
             _sessaoRepository = sessaoRepository;
+            _historicoSessaoRepository = historicoSessaoRepository;
         }
 
         public async Task<Guid> ObterIdCassinoPorToken(string tokenCassino)
@@ -215,6 +220,7 @@ namespace GameMasterEnterprise.Service.Services
 
 
                 await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
+                
 
                 return saldoNaoZero;
             }
