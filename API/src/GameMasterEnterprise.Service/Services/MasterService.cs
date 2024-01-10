@@ -23,6 +23,7 @@ namespace GameMasterEnterprise.Service.Services
         public MasterService(
             INotificador notificador,
             IPlayerSaldoRepository playerSaldoRepository,
+            IPlayerSaldoService playerSaldoService,
             IJogoService jogoService,
             ICassinoService cassinoService,
             IPlayerService playerService,
@@ -38,6 +39,7 @@ namespace GameMasterEnterprise.Service.Services
             _playerService = playerService;
             _sessaoService = sessaoService;
             _playerSaldoRepository = playerSaldoRepository;
+            _playerSaldoService = playerSaldoService;
 
             _jogoRepository = jogoRepository;
             _cassinoRepository = cassinoRepository;
@@ -127,22 +129,10 @@ namespace GameMasterEnterprise.Service.Services
             {
                 throw new InvalidOperationException("Player não encontrado.");
             }
-            else
-            {
 
-                var teste = await _playerSaldoService.ObterPorPlayerPlayerSaldo(idPlayer);
-                float? saldoAtual = await _playerSaldoRepository.ObterSaldoPorPlayerId(idPlayer);
-                if (saldoAtual == null)
-                {
-                    var saldo = new PlayerSaldo
-                    {
-                        PlayerId = idPlayer,
-                        Saldo = 1
-                    };
 
-                    await _playerSaldoService.CriarPlayerSaldo(saldo);
-                }
-            }
+            var idSaldo = await _playerSaldoService.ObterIdPlayerSaldo(idPlayer);
+
 
             var idCassino = await _playerService.ObterCassinoIdPorPlayerId(idPlayer);
             var urlCassino = await _cassinoRepository.ObterUrlCassino(idCassino);
@@ -162,23 +152,22 @@ namespace GameMasterEnterprise.Service.Services
             {
                 method = "user_balance",
                 agent_token = tokenCassino,
-                user_code = "teste"
+                user_code = token
             };
 
             try
             {
                 var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
-                var saldoNaoZero = Convert.ToSingle(respostaObjeto.GetProperty("user_balance").GetInt32() != 0);
 
-                var idSaldo = await _playerSaldoRepository.ObterSaldoIdPorPlayerId(idPlayer);
+                var userBalanceElement = respostaObjeto.GetProperty("user_balance");
 
-                await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldoNaoZero);
+                var saldoNaoZero = userBalanceElement.GetInt32() != 0;
+                var saldo = userBalanceElement.GetInt32();
 
-                if(saldoNaoZero == 0)
-                {
-                    return false;
-                }
-                else return true;
+
+                await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
+
+                return saldoNaoZero;
             }
             catch (Exception ex)
             {

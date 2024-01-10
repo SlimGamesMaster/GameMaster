@@ -13,9 +13,9 @@ namespace GameMasterEnterprise.Service.Services
         {
             _PlayerSaldoRepository = PlayerSaldoRepository;
         }
-        public async Task<PlayerSaldo> ObterPlayerSaldo(Guid PlayerSaldoId)
+        public async Task<PlayerSaldo> ObterPlayerSaldo(Guid PlayerId)
         {
-            var PlayerSaldoPorId = await _PlayerSaldoRepository.ObterPorId(PlayerSaldoId);
+            var PlayerSaldoPorId = await _PlayerSaldoRepository.ObterModelSaldoPorPlayerId(PlayerId);
 
             if (PlayerSaldoPorId == null)
             {
@@ -24,22 +24,25 @@ namespace GameMasterEnterprise.Service.Services
             }
             return PlayerSaldoPorId;
         }
-        public async Task<Guid> ObterPorPlayerPlayerSaldo(Guid playerId)
+        public async Task<Guid> ObterIdPlayerSaldo(Guid playerId)
         {
-            var PlayerSaldo = await _PlayerSaldoRepository.ObterModelSaldoPorPlayerId(playerId);
+            var playerSaldo = await _PlayerSaldoRepository.ObterModelSaldoPorPlayerId(playerId);
 
-            if (PlayerSaldo == null)
+            if (playerSaldo == null)
             {
                 var saldo = new PlayerSaldo
                 {
                     PlayerId = playerId,
-                    Saldo = 1
+                    Saldo = 0
                 };
 
                 var saldoId = await _PlayerSaldoRepository.GerarSaldo(saldo);
                 return saldoId;
             }
-            return Guid.Empty;
+            else
+            {
+                return playerSaldo.Id;
+            }
         }
         public async Task CriarPlayerSaldo(PlayerSaldo PlayerSaldo)
         {

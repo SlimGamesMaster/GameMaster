@@ -8,8 +8,8 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task AtualizarPlayerSaldo(Guid PlayerSaldoId, float saldoNovo);
         Task CriarPlayerSaldo(PlayerSaldo PlayerSaldo);
         Task Dispose();
-        Task<PlayerSaldo> ObterPlayerSaldo(Guid PlayerSaldoId);
-        Task<Guid> ObterPorPlayerPlayerSaldo(Guid playerId);
+        Task<Guid> ObterIdPlayerSaldo(Guid playerId);
+        Task<PlayerSaldo> ObterPlayerSaldo(Guid PlayerId);
         Task RemoverPlayerSaldo(Guid PlayerSaldoId);
     }
 }
