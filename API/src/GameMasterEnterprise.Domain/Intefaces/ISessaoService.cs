@@ -9,7 +9,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
         Task<Guid> CriarSessao(Sessao sessao);
         Task Dispose();
         Task<Sessao> ObterSessao(Guid SessaoId);
-        Task<IEnumerable<Sessao>> ObterTodosSessaos();
+        Task<IEnumerable<Sessao>> ObterTodos();
         Task RemoverSessao(Guid SessaoId);
     }
 }

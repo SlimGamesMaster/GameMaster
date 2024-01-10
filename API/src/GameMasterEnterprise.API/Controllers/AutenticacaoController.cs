@@ -51,11 +51,7 @@ namespace GameMasterEnterprise.API.Controllers
             var user = new ApplicationUser()
             {
                 UserName = Input.Email,
-                Nome = Input.Nome,
                 Email = Input.Email,
-                Documento = Input.Doc,
-                Cep = Input.Cep,
-                Numero = Input.Numero,
                 Password = Input.Password,
                 ConfirmPassord = Input.ConfirmPassword,
                 Imagem = ""

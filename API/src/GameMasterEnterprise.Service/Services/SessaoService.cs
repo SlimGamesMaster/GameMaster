@@ -8,23 +8,38 @@ namespace GameMasterEnterprise.Service.Services
     public class SessaoService : BaseService, ISessaoService
     {
         private readonly ISessaoRepository _SessaoRepository;
+        private readonly IPlayerRepository _playerRepository;
+        private readonly ICassinoRepository _cassinoRepository;
+        private readonly IJogoRepository _jogoRepository;
 
-        public SessaoService(ISessaoRepository SessaoRepository, INotificador notificador)
+        public SessaoService(ISessaoRepository SessaoRepository,
+            IPlayerRepository PlayerRepository,
+            ICassinoRepository cassinoRepository,
+            IJogoRepository jogoRepository,
+            INotificador notificador)
             : base(notificador)
         {
             _SessaoRepository = SessaoRepository;
+            _playerRepository = PlayerRepository;
+            _jogoRepository = jogoRepository;
+            _cassinoRepository = cassinoRepository;
         }
+
 
         public async Task<Sessao> ObterSessao(Guid SessaoId)
         {
-            var SessaoPorId = await _SessaoRepository.ObterPorId(SessaoId);
+            var Sessao = await _SessaoRepository.ObterPorId(SessaoId);
+            Sessao.Cassino = await _cassinoRepository.ObterPorId(Sessao.CassinoId);
+            Sessao.Jogo = await _jogoRepository.ObterPorId(Sessao.JogoId);
+            Sessao.Player = await _playerRepository.ObterPorId(Sessao.PlayerId);
 
-            if (SessaoPorId == null)
+
+            if (Sessao == null)
             {
                 Notificar("Sessao não encontrado.");
                 return null;
             }
-            return SessaoPorId;
+            return Sessao;
         }
         public async Task<Guid> CriarSessao(Sessao sessao)
         {
@@ -48,10 +63,18 @@ namespace GameMasterEnterprise.Service.Services
                 throw new InvalidOperationException("Sessão já cadastrada");
             }
         }
-
-        public async Task<IEnumerable<Sessao>> ObterTodosSessaos()
+        public async Task<IEnumerable<Sessao>> ObterTodos()
         {
-            return await _SessaoRepository.ObterTodos();
+            var sessoes = await _SessaoRepository.ObterTodos();
+
+            foreach (var sessao in sessoes)
+            {
+                sessao.Cassino = await _cassinoRepository.ObterPorId(sessao.CassinoId);
+                sessao.Jogo = await _jogoRepository.ObterPorId(sessao.JogoId);
+                sessao.Player = await _playerRepository.ObterPorId(sessao.PlayerId);
+            }
+
+            return sessoes;
         }
         public async Task AtualizarSessao(Guid SessaoId, Sessao SessaoNovo)
         {
@@ -66,13 +89,10 @@ namespace GameMasterEnterprise.Service.Services
             Sessao = SessaoNovo;
             await _SessaoRepository.Atualizar(Sessao);
         }
-
-
         public async Task RemoverSessao(Guid SessaoId)
         {
             await _SessaoRepository.Remover(SessaoId);
         }
-
         public async Task Dispose()
         {
             _SessaoRepository?.Dispose();
