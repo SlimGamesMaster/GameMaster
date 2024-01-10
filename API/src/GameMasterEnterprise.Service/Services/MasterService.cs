@@ -99,18 +99,19 @@ namespace GameMasterEnterprise.Service.Services
             try
             {
                 // Lógica para criar a sessão
-
                 var novaSessao = new Sessao
                 {
                     Dificuldade = master.Dificuldade,
                     CassinoId = cassinoId,
                     JogoId = jogoId,
-                    PlayerId = playerId
+                    PlayerId = playerId,
+                    Situacao = 0,
+                    Valor = 0,
                 };
 
                 // Chame um método do seu serviço ou repositório para criar a sessão
-                 var sessaoId = await _sessaoService.CriarSessao(novaSessao);
-                 var urlCassino = await _cassinoRepository.ObterUrlCassino(cassinoId);
+                var sessaoId = await _sessaoService.CriarSessao(novaSessao);
+                var urlCassino = await _cassinoRepository.ObterUrlCassino(cassinoId);
                 var nomeJogo = await _jogoRepository.ObterNomeJogo(jogoId); 
 
                 return $"slimgamesmaster.com/{nomeJogo}/index.php?sessao={sessaoId}";

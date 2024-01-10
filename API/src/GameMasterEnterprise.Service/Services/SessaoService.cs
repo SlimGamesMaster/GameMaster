@@ -76,6 +76,19 @@ namespace GameMasterEnterprise.Service.Services
 
             return sessoes;
         }
+        public async Task FinalizarSessao(Guid SessaoId, float valor, bool status)
+        {
+            var Sessao = await _SessaoRepository.ObterPorId(SessaoId);
+
+            if (Sessao == null)
+            {
+                throw new InvalidOperationException("Sessao não encontrado.");
+            }
+            Sessao.Valor = valor;
+            if(status == false) { Sessao.Situacao = 1; }
+            if (status == true) { Sessao.Situacao = 2; }         
+            await _SessaoRepository.Atualizar(Sessao);
+        }
         public async Task AtualizarSessao(Guid SessaoId, Sessao SessaoNovo)
         {
             var Sessao = await _SessaoRepository.ObterPorId(SessaoId);

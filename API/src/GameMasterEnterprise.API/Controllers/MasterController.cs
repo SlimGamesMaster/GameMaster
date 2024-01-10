@@ -100,7 +100,6 @@ namespace Ipet.API.Controllers
                 }
 
                 // Criação da Sessão
-
                 var urlDaSessao = await _masterService.CriarSessao(_mapper.Map<Master>(master), cassinoId, jogoId, playerId);
 
 
@@ -118,7 +117,6 @@ namespace Ipet.API.Controllers
         {         
             return await _masterService.ConsultaSaldoJogador(tokenUsuario);
         }
-
         [AllowAnonymous]
         [HttpGet("obter-sessao")]
         public async Task<ActionResult<Cassino>> ObterSessao(Guid sessaoId)
@@ -131,6 +129,17 @@ namespace Ipet.API.Controllers
             }
 
             return Ok(cassino);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("finalizar-sessao")]
+        public async Task<ActionResult> FinalizarSessao(FinalizacaoSessaoViewModel finalizacaoSessao)
+        {
+
+
+            await _sessaoService.FinalizarSessao(finalizacaoSessao.SessaoId, finalizacaoSessao.Valor, finalizacaoSessao.Status);
+
+            return Ok("Sessao Finalizada com sucesso");
         }
     }
 }

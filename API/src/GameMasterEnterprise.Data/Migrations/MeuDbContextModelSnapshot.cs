@@ -137,6 +137,12 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.Property<Guid>("PlayerId")
                         .HasColumnType("char(36)");
 
+                    b.Property<int?>("Situacao")
+                        .HasColumnType("int");
+
+                    b.Property<float?>("Valor")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CassinoId");

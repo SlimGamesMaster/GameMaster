@@ -19,5 +19,9 @@ namespace GameMasterEnterprise.Domain.Models
         public Guid CassinoId { get; set; }
         public Cassino? Cassino { get; set; }
 
+
+        public float? Valor {  get; set; }
+        public int? Situacao { get; set; }
+
     }
 }
