@@ -81,6 +81,7 @@ namespace GameMasterEnterprise.Service.Services
 
             return id.Id;
         }
+
         public async Task<Guid> ObterCassinoIdPorPlayerId(Guid idPlayer)
         {
             try

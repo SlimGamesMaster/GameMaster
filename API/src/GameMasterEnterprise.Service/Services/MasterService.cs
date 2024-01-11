@@ -126,9 +126,10 @@ namespace GameMasterEnterprise.Service.Services
                 throw;
             }
         }
-        public async Task<float> ConsultaSaldoJogador(string token)
+        public async Task<float> ConsultaSaldoJogador(Guid sessaoId)
         {
-            var idPlayer = await _playerService.ObterPlayerIdPorToken(token);
+
+            var idPlayer = await _sessaoRepository.ObterPlayerIdPorSessaoId(sessaoId);
 
             if (idPlayer == Guid.Empty || idPlayer == null)
             {

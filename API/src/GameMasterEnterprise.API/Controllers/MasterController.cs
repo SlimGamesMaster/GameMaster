@@ -113,9 +113,9 @@ namespace Ipet.API.Controllers
                 
         }
         [HttpGet("master/consulta-saldo")]
-        public async Task<float> ConsultaSaldo (string tokenUsuario)
+        public async Task<float> ConsultaSaldo (Guid sessaoId)
         {         
-            return await _masterService.ConsultaSaldoJogador(tokenUsuario);
+            return await _masterService.ConsultaSaldoJogador(sessaoId);
         }
         [AllowAnonymous]
         [HttpPost("master/transacao")]
