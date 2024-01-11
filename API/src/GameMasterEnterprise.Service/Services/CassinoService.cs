@@ -62,7 +62,31 @@ namespace GameMasterEnterprise.Service.Services
 
             return cassinoPorId.Id;
         }
+        public async Task<float> AtualizarSaldoCassino(Guid cassinoId,float valor, bool situacao)
+        {
+            var cassino = await _cassinoRepository.ObterPorId(cassinoId);
 
+            var saldoAtual = cassino.Banco;
+
+            if(situacao==true)
+            {
+                saldoAtual = saldoAtual + valor;
+            }if(situacao == false)
+            {
+                saldoAtual = saldoAtual - valor;
+                if(saldoAtual < 0)
+                {
+                    //Codigo caso cassino não tenha dinheiro suficiente
+                }
+            }
+
+            cassino.Banco = saldoAtual;
+
+            await _cassinoRepository.Atualizar(cassino);
+
+
+            return saldoAtual;
+        }
         public async Task CriarCassino(Cassino cassino)
         {
 
@@ -95,13 +119,10 @@ namespace GameMasterEnterprise.Service.Services
                 return;
             }
 
-            if(cassinoNovo.Nome == cassino.Nome) {
-                Notificar("Dados Repetidos.");
-                return;
-            }
 
             cassino.Url = cassinoNovo.Url;
             cassino.Nome= cassinoNovo.Nome;
+            cassino.Banco = cassinoNovo.Banco;
             await _cassinoRepository.Atualizar(cassino);
         }
 

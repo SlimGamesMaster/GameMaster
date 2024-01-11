@@ -20,6 +20,13 @@ namespace GameMasterEnterprise.Data.Repository
 
             return cassino?.Url;
         }
+        public async Task<float> ObterSaldoCassino(Guid id)
+        {
+            var cassino = await Db.Cassino.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            return cassino.Banco;
+        }
         public async Task<string> ObterTokenCassino(Guid id)
         {
             var cassino = await Db.Cassino.AsNoTracking()

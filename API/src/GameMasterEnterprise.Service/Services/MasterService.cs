@@ -1,5 +1,6 @@
 ﻿using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
+using System.Drawing;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -171,7 +172,7 @@ namespace GameMasterEnterprise.Service.Services
                 var saldoNaoZero = userBalanceElement.GetSingle() != 0;
                 float saldo = userBalanceElement.GetSingle();
 
-
+                
                 await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
 
                 return saldo;
@@ -183,7 +184,20 @@ namespace GameMasterEnterprise.Service.Services
             }
 
         }
-        public async Task<bool> RealizaTransicao(Guid IdSessao, string operacao, float total)
+        public async Task<float> ConsultaSaldoCassino(Guid sessaoId)
+        {
+
+
+            var idCassino = await _sessaoRepository.ObterCassinoIdPorSessaoId(sessaoId);
+            float SaldoAtual = await _cassinoRepository.ObterSaldoCassino(idCassino);
+            if (idCassino == Guid.Empty)
+            {
+                throw new InvalidOperationException("dados não encontrados.");
+            }
+            return SaldoAtual;
+
+        }
+        public async Task<float> RealizaTransicao(Guid IdSessao, string operacao, float total)
         {
             await _sessaoService.ObterSessaoAtiva(IdSessao);
 
@@ -217,8 +231,8 @@ namespace GameMasterEnterprise.Service.Services
 
                 var userBalanceElement = respostaObjeto.GetProperty("user_balance");
 
-                var saldoNaoZero = userBalanceElement.GetInt32() != 0;
-                var saldo = userBalanceElement.GetInt32();
+                var saldoNaoZero = userBalanceElement.GetSingle() != 0;
+                float saldo = userBalanceElement.GetSingle();
 
 
                 var transacao = new HistoricoSessao
@@ -228,10 +242,14 @@ namespace GameMasterEnterprise.Service.Services
                     Valor = total,
                 };
 
+                float saldoAtual = 00;
+                if(operacao == "credit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, true); }
+                if (operacao == "debit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, false); }
+                
                 await _historicoSessaoService.CriarHistoricoSessao(transacao);
 
 
-                return saldoNaoZero;
+                return saldoAtual;
             }
             catch (Exception ex)
             {

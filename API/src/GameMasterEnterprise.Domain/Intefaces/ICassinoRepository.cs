@@ -6,6 +6,7 @@ namespace GameMasterEnterprise.Domain.Intefaces
     {
         Task<Cassino> ObterPorNome(string nome);
         Task<Cassino> ObterPorToken(string token);
+        Task<float> ObterSaldoCassino(Guid id);
         Task<string> ObterTokenCassino(Guid id);
         Task<string> ObterUrlCassino(Guid id);
     }

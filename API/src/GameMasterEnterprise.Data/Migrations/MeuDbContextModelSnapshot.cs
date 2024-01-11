@@ -25,6 +25,9 @@ namespace GameMasterEnterprise.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<float>("Banco")
+                        .HasColumnType("float");
+
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime(6)");
 

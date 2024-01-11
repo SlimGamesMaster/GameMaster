@@ -113,13 +113,23 @@ namespace Ipet.API.Controllers
                 
         }
         [HttpGet("master/consulta-saldo")]
-        public async Task<float> ConsultaSaldo (Guid sessaoId)
+        public async Task<ActionResult> ConsultaSaldo (Guid sessaoId)
         {         
-            return await _masterService.ConsultaSaldoJogador(sessaoId);
+            
+            var userBalance = await _masterService.ConsultaSaldoJogador(sessaoId);
+            var cassinoBalance = await _masterService.ConsultaSaldoCassino(sessaoId);
+            var url = new SuccessBalanceResponse
+            {
+                UserBalance = userBalance,
+                CassinoBalance = cassinoBalance
+            };
+            return Ok(url);
+
+
         }
         [AllowAnonymous]
         [HttpPost("master/transacao")]
-        public async Task<bool> RealizaTransacao(TransacaoViewModel transacaoViewModel)
+        public async Task<float> RealizaTransacao(TransacaoViewModel transacaoViewModel)
         {
             if (transacaoViewModel.Operacao == "debit" || transacaoViewModel.Operacao == "credit") 
             {
@@ -127,14 +137,14 @@ namespace Ipet.API.Controllers
             }
             else
             {
-                return false;
+                throw new ArgumentException("A operação deve ser 'debit' ou 'credit'.");
             }
-           
+
         }
 
         [AllowAnonymous]
         [HttpGet("master/obter-sessao")]
-        public async Task<ActionResult<Cassino>> ObterSessao(Guid sessaoId)
+        public async Task<ActionResult> ObterSessao(Guid sessaoId)
         {
             var cassino = await _sessaoService.ObterSessaoAtiva(sessaoId);
 

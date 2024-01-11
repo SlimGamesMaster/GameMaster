@@ -11,6 +11,7 @@ namespace GameMasterEnterprise.API.ViewModels
         public string Nome { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
 
+        public float Banco { get; set; }
         public string Token { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Url { get; set; }
