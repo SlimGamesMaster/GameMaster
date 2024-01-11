@@ -117,11 +117,6 @@ namespace GameMasterEnterprise.Service.Services
                 return;
             }
 
-            if(PlayerNovo.Nome == Player.Nome) {
-                Notificar("Dados Repetidos.");
-                return;
-            }
-
             Player.Token = PlayerNovo.Token;
             Player.Nome= PlayerNovo.Nome;
             await _playerRepository.Atualizar(Player);

@@ -77,12 +77,9 @@ namespace GameMasterEnterprise.Service.Services
                 return;
             }
 
-            if(JogoNovo.Nome == Jogo.Nome) {
-                Notificar("Dados Repetidos.");
-                return;
-            }
 
-            Jogo = JogoNovo;
+            Jogo.Nome = JogoNovo.Nome;
+            Jogo.Codigo = JogoNovo.Codigo;
             await _JogoRepository.Atualizar(Jogo);
         }
 
