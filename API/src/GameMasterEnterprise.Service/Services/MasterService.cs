@@ -130,6 +130,7 @@ namespace GameMasterEnterprise.Service.Services
         {
 
             var idPlayer = await _sessaoRepository.ObterPlayerIdPorSessaoId(sessaoId);
+            var token = await _playerRepository.ObterTokenJogador(idPlayer);
 
             if (idPlayer == Guid.Empty || idPlayer == null)
             {
