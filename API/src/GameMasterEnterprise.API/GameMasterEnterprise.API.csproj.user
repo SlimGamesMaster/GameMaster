@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <NameOfLastUsedPublishProfile>D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.API\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.API\Properties\PublishProfiles\GameMasterEnterpriseAPI - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

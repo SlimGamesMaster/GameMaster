@@ -121,7 +121,15 @@ namespace Ipet.API.Controllers
         [HttpPost("master/transacao")]
         public async Task<bool> RealizaTransacao(TransacaoViewModel transacaoViewModel)
         {
-            return await _masterService.RealizaTransicao(transacaoViewModel.SessaoId, transacaoViewModel.Operacao, transacaoViewModel.Total);
+            if (transacaoViewModel.Operacao == "debit" || transacaoViewModel.Operacao == "credit") 
+            {
+                return await _masterService.RealizaTransicao(transacaoViewModel.SessaoId, transacaoViewModel.Operacao, transacaoViewModel.Total);
+            }
+            else
+            {
+                return false;
+            }
+           
         }
 
         [AllowAnonymous]

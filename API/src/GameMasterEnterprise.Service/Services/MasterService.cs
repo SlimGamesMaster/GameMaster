@@ -168,8 +168,8 @@ namespace GameMasterEnterprise.Service.Services
 
                 var userBalanceElement = respostaObjeto.GetProperty("user_balance");
 
-                var saldoNaoZero = userBalanceElement.GetInt32() != 0;
-                var saldo = userBalanceElement.GetInt32();
+                var saldoNaoZero = userBalanceElement.GetSingle() != 0;
+                float saldo = userBalanceElement.GetSingle();
 
 
                 await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
