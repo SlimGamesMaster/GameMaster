@@ -60,6 +60,21 @@ namespace GameMasterEnterprise.Service.Services
         {
             return await _historicosessaoRepository.ObterTodos();
         }
+        public async Task<IEnumerable<HistoricoSessao>> ObterOsUltimos100()
+        {
+            var historicos = await _historicosessaoRepository.ObterUltimos100();
+
+            foreach (var historico in historicos)
+            {
+                
+                Console.WriteLine(historico.DataCadastro);
+            }
+
+
+            return historicos;
+        }
+
+
         public async Task RemoverHistoricoSessao(Guid historicosessaoId)
         {
             await _historicosessaoRepository.Remover(historicosessaoId);

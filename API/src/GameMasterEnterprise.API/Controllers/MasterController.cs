@@ -166,6 +166,22 @@ namespace Ipet.API.Controllers
 
             return Ok("Sessao Finalizada com sucesso");
         }
+
+        [AllowAnonymous]
+        [HttpGet("master/obter-ultimas-rodadas")]
+        public async Task<ActionResult> ObterUltimasRodadas()
+        {
+            var historicoJogadores = await _masterService.ObterHistoricoJogadores();
+
+            if (historicoJogadores == null)
+            {
+                return NotFound("Sessao não encontrado.");
+            }
+
+            return Ok(historicoJogadores);
+        }
+
+
     }
 }
 

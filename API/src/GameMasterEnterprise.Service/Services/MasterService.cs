@@ -259,6 +259,31 @@ namespace GameMasterEnterprise.Service.Services
 
         }
 
+        public async Task<IEnumerable<ResponseHistoricoJogador>> ObterHistoricoJogadores()
+        {
+            var historicos = await _historicoSessaoRepository.ObterUltimos100();
+
+            var historicoJogadores = new List<ResponseHistoricoJogador>();
+
+            foreach (var historico in historicos)
+            {
+                var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
+
+                var nome = await _playerRepository.ObterNomeJogador(playerId);
+                //var token = await _playerRepository.ObterTokenJogador(playerId);
+
+                var jogador = new ResponseHistoricoJogador
+                {
+                   HistoricoSessaoAtivo = historico,
+                   NomePlayer = nome,
+                   TokenPlayer = "",                   
+                };
+
+
+                historicoJogadores.Add(jogador);
+            }
+            return historicoJogadores;
+        }
 
 
 

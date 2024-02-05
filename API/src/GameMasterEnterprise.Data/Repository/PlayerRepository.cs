@@ -30,6 +30,13 @@ namespace GameMasterEnterprise.Data.Repository
 
             return player?.Token;
         }
+        public async Task<string> ObterNomeJogador(Guid id)
+        {
+            var player = await Db.Player.AsNoTracking()
+                .FirstOrDefaultAsync(c => c.Id == id);
+
+            return player?.Nome;
+        }
         public async Task<Guid> ObterCassinoIdPorPlayerId(Guid playerId)
         {
             var cassinoId = await Db.Player.AsNoTracking()

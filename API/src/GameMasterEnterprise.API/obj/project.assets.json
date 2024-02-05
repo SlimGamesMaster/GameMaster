@@ -8392,11 +8392,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
+      "projectUniqueName": "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
       "projectName": "GameMasterEnterprise.API",
-      "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
+      "projectPath": "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.API\\GameMasterEnterprise.API.csproj",
       "packagesPath": "C:\\Users\\Eduardo\\.nuget\\packages\\",
-      "outputPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.API\\obj\\",
+      "outputPath": "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Eduardo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8413,14 +8413,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj": {
-              "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj"
+            "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj": {
+              "projectPath": "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.Data\\GameMasterEnterprise.Data.csproj"
             },
-            "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj": {
-              "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj"
+            "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj": {
+              "projectPath": "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.Domain\\GameMasterEnterprise.Domain.csproj"
             },
-            "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj": {
-              "projectPath": "D:\\AMBIENTE DEV\\C#\\30.12.23.API\\Slim Games\\GameMaster\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj"
+            "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj": {
+              "projectPath": "D:\\AMBIENTE DEV\\C#\\Api - Game Master\\GameMaster\\API\\src\\GameMasterEnterprise.Service\\GameMasterEnterprise.Service.csproj"
             }
           }
         }

@@ -68,7 +68,6 @@ namespace GameMasterEnterprise.Service.Services
 
             }
         }
-
         public async Task<Guid> ObterPlayerIdPorToken(string Token)
         {
             var id = await _playerRepository.ObterPorToken(Token);
@@ -81,7 +80,6 @@ namespace GameMasterEnterprise.Service.Services
 
             return id.Id;
         }
-
         public async Task<Guid> ObterCassinoIdPorPlayerId(Guid idPlayer)
         {
             try
