@@ -259,30 +259,49 @@ namespace GameMasterEnterprise.Service.Services
 
         }
 
-        public async Task<IEnumerable<ResponseHistoricoJogador>> ObterHistoricoJogadores()
+        public async Task<ResponseHistoricoJogador> ObterHistoricoJogadores(string jogoNome)
         {
-            var historicos = await _historicoSessaoRepository.ObterUltimos100();
+
+
+        
+
+
+            var historicos = await _historicoSessaoRepository.ObterUltimos100(jogoNome);
 
             var historicoJogadores = new List<ResponseHistoricoJogador>();
 
+            float totalDebit = 0;
+            float totalCredit = 0;
+
+            int creditCount = 0;
+            int debitCount = 0;
+
             foreach (var historico in historicos)
             {
-                var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
-
-                var nome = await _playerRepository.ObterNomeJogador(playerId);
+                //var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
+                //var nome = await _playerRepository.ObterNomeJogador(playerId);
                 //var token = await _playerRepository.ObterTokenJogador(playerId);
-
-                var jogador = new ResponseHistoricoJogador
+                if(historico.Operacao == "credit")
                 {
-                   HistoricoSessaoAtivo = historico,
-                   NomePlayer = nome,
-                   TokenPlayer = "",                   
-                };
-
-
-                historicoJogadores.Add(jogador);
+                    totalDebit = totalDebit + historico.Valor;
+                    creditCount++;
+                }
+                if (historico.Operacao == "debit")
+                {
+                    totalCredit = totalCredit + historico.Valor;
+                    debitCount++;
+                }
             }
-            return historicoJogadores;
+
+            var jogador = new ResponseHistoricoJogador
+            {
+                Credit = totalDebit,
+                Debit = totalCredit,
+
+                CreditCount = creditCount,
+                DebitCount = debitCount,
+            };
+            return jogador;
         }
 
 

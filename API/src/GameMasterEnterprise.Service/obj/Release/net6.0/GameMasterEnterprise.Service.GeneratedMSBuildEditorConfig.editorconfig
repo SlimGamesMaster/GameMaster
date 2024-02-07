@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GameMasterEnterprise.Service
-build_property.ProjectDir = D:\AMBIENTE DEV\C#\30.12.23.API\Slim Games\GameMaster\API\src\GameMasterEnterprise.Service\
+build_property.ProjectDir = D:\AMBIENTE DEV\C#\Api - Game Master\GameMaster\API\src\GameMasterEnterprise.Service\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -17,10 +17,11 @@ namespace GameMasterEnterprise.Data.Repository
                 .Where(p => p.SessaoId == sessaoId)
                 .ToListAsync();
         }
-        public async Task<List<HistoricoSessao>> ObterUltimos100()
+        public async Task<List<HistoricoSessao>> ObterUltimos100(string nomeJogo)
         {
             return await DbSet
-                .OrderByDescending(e => e.DataCadastro)
+                .Where(historico => historico.Sessao.Jogo.Nome == nomeJogo)
+                .OrderByDescending(historico => historico.DataCadastro)
                 .Take(100)
                 .ToListAsync();
         }

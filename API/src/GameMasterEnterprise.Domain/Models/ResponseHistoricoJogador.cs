@@ -8,10 +8,13 @@ namespace GameMasterEnterprise.Domain.Models
 {
     public class ResponseHistoricoJogador
     {
-        public HistoricoSessao HistoricoSessaoAtivo { get; set; }
-        public string NomePlayer { get; set; }
+        public float Credit { get; set; }
 
-        public string TokenPlayer { get; set; }
+        public float Debit { get; set; }
+
+        public int CreditCount { get; set; }
+
+        public int DebitCount { get; set; }
 
     }
 }

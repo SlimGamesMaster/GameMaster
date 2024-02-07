@@ -169,9 +169,9 @@ namespace Ipet.API.Controllers
 
         [AllowAnonymous]
         [HttpGet("master/obter-ultimas-rodadas")]
-        public async Task<ActionResult> ObterUltimasRodadas()
+        public async Task<ActionResult> ObterUltimasRodadasJogo(string nomeJogo)
         {
-            var historicoJogadores = await _masterService.ObterHistoricoJogadores();
+            var historicoJogadores = await _masterService.ObterHistoricoJogadores(nomeJogo);
 
             if (historicoJogadores == null)
             {
