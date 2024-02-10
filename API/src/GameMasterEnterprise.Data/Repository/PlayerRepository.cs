@@ -12,7 +12,6 @@ namespace GameMasterEnterprise.Data.Repository
         {
             return await DbSet.FirstOrDefaultAsync(c => c.Nome == nome);
         }
-
         public async Task<Player> ObterPorToken(string token)
         {
             return await DbSet.FirstOrDefaultAsync(c => c.Token == token);

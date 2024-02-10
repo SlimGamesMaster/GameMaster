@@ -25,5 +25,23 @@ namespace GameMasterEnterprise.Data.Repository
                 .Take(100)
                 .ToListAsync();
         }
+
+        public async Task<List<HistoricoSessao>> ObterPorFiltroCassino(string nomeCassino, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
+        {
+            IQueryable<HistoricoSessao> query = DbSet
+                .Where(historico => historico.Sessao.Cassino.Nome == nomeCassino)
+                .OrderByDescending(historico => historico.DataCadastro)
+                .Take(100);
+            if (dataLimiteInferior.HasValue)
+            {
+                query = query.Where(historico => historico.DataCadastro >= dataLimiteInferior.Value);
+            }
+            if (dataLimiteSuperior.HasValue)
+            {
+                query = query.Where(historico => historico.DataCadastro <= dataLimiteSuperior.Value);
+            }
+            return await query.ToListAsync();
+        }
+
     }
 }

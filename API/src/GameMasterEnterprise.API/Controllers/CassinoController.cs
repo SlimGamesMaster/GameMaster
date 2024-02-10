@@ -5,6 +5,7 @@ using GameMasterEnterprise.API.Models.Request;
 using GameMasterEnterprise.API.ViewModels;
 using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
+using GameMasterEnterprise.Service.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace Ipet.API.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ICassinoService _cassinoService;
+        private readonly IMasterService _masterService;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
 
@@ -28,6 +30,7 @@ namespace Ipet.API.Controllers
         public CassinoController(
             IMapper mapper, INotificador notificador,
             ICassinoService cassinoService,
+            IMasterService masterService,
                               SignInManager<IdentityUser> signInManager,
                               UserManager<IdentityUser> userManager,
                               IOptions<AppSettings> appSettings,
@@ -35,6 +38,7 @@ namespace Ipet.API.Controllers
         {
             _cassinoService = cassinoService;
             _signInManager = signInManager;
+            _masterService = masterService;
             _userManager = userManager;
             _logger = logger;
             _appSettings = appSettings.Value;
@@ -88,6 +92,21 @@ namespace Ipet.API.Controllers
             var cassinos = await _cassinoService.ObterTodosCassinos();
             return Ok(cassinos);
         }
+
+        [AllowAnonymous]
+        [HttpGet("master/obter-historico-cassino")]
+        public async Task<ActionResult> ObterHistoricoCassino(string nomeCassino, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
+        {
+            var historicoCassino = await _masterService.ObterHistoricoCassino(nomeCassino, dataLimiteInferior, dataLimiteSuperior);
+
+            if (historicoCassino == null)
+            {
+                return NotFound("Sessao não encontrado.");
+            }
+
+            return Ok(historicoCassino);
+        }
+
 
     }
 }

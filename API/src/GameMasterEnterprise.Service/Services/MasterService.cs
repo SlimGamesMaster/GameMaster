@@ -258,14 +258,8 @@ namespace GameMasterEnterprise.Service.Services
             }
 
         }
-
         public async Task<ResponseHistoricoJogador> ObterHistoricoJogadores(string jogoNome)
         {
-
-
-        
-
-
             var historicos = await _historicoSessaoRepository.ObterUltimos100(jogoNome);
 
             var historicoJogadores = new List<ResponseHistoricoJogador>();
@@ -278,19 +272,10 @@ namespace GameMasterEnterprise.Service.Services
 
             foreach (var historico in historicos)
             {
-                //var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
+                var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
                 //var nome = await _playerRepository.ObterNomeJogador(playerId);
                 //var token = await _playerRepository.ObterTokenJogador(playerId);
-                if(historico.Operacao == "credit")
-                {
-                    totalDebit = totalDebit + historico.Valor;
-                    creditCount++;
-                }
-                if (historico.Operacao == "debit")
-                {
-                    totalCredit = totalCredit + historico.Valor;
-                    debitCount++;
-                }
+                
             }
 
             var jogador = new ResponseHistoricoJogador
@@ -304,7 +289,43 @@ namespace GameMasterEnterprise.Service.Services
             return jogador;
         }
 
+        public async Task<ResponseHistoricoCassino> ObterHistoricoCassino(string cassino, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
+        {
+            if (dataLimiteInferior.HasValue && dataLimiteSuperior.HasValue)
+            {
+                if (dataLimiteInferior > DateTime.Now || dataLimiteSuperior > DateTime.Now)
+                {
+                    throw new ArgumentException("As datas limite não podem ser no futuro.");
+                }
+                if ((dataLimiteSuperior - dataLimiteInferior).Value.TotalDays > 30)
+                {
+                    throw new ArgumentException("O intervalo entre as datas limite não pode ser maior que um mês.");
+                }
+            }
 
+            var historicos = await _historicoSessaoRepository.ObterPorFiltroCassino(cassino, dataLimiteInferior, dataLimiteSuperior);
+            var historicoCassino = new List<HistoricoCassino>();
+
+            foreach (var historico in historicos)
+            {
+                var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
+                var player = await _playerRepository.ObterPorId(playerId);
+
+
+                var _historicoCassino = new HistoricoCassino
+                {
+                    Player = player,
+                    HistoricoSessao = historico,
+                };
+
+                historicoCassino.Add(_historicoCassino);
+            }
+
+            return new ResponseHistoricoCassino
+            {
+                HistoricoCassino = historicoCassino
+            };
+        }
 
     }
 }

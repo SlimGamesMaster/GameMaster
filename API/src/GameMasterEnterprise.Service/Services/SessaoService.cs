@@ -31,7 +31,6 @@ namespace GameMasterEnterprise.Service.Services
             _cassinoRepository = cassinoRepository;
         }
 
-
         public async Task<Sessao> ObterSessao(Guid SessaoId)
         {
             var Sessao = await _SessaoRepository.ObterPorId(SessaoId);
