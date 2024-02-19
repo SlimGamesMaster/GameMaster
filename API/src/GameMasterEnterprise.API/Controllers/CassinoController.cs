@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Security.Claims;
 using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace Ipet.API.Controllers
@@ -49,6 +50,8 @@ namespace Ipet.API.Controllers
         public async Task<ActionResult> CriarCassino(CassinoViewModel cassino)
         {
 
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            cassino.User = Guid.Parse(userId);
 
             await _cassinoService.CriarCassino(_mapper.Map<Cassino>(cassino));
 
@@ -95,9 +98,12 @@ namespace Ipet.API.Controllers
 
         //[AllowAnonymous]
         [HttpGet("master/obter-historico-cassino")]
-        public async Task<ActionResult> ObterHistoricoCassino(string nomeCassino, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
+        public async Task<ActionResult> ObterHistoricoCassino(DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
         {
-            var historicoCassino = await _masterService.ObterHistoricoCassino(nomeCassino, dataLimiteInferior, dataLimiteSuperior);
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Guid userId = Guid.Parse(user);
+
+            var historicoCassino = await _masterService.ObterHistoricoCassino(userId, dataLimiteInferior, dataLimiteSuperior);
 
             if (historicoCassino == null)
             {

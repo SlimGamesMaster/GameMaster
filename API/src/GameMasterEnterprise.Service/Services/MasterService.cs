@@ -258,6 +258,8 @@ namespace GameMasterEnterprise.Service.Services
             }
 
         }
+
+
         public async Task<ResponseHistoricoJogador> ObterHistoricoJogadores(string jogoNome)
         {
             var historicos = await _historicoSessaoRepository.ObterUltimos100(jogoNome);
@@ -288,9 +290,9 @@ namespace GameMasterEnterprise.Service.Services
             };
             return jogador;
         }
-
-        public async Task<ResponseHistoricoCassino> ObterHistoricoCassino(string cassino, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
+        public async Task<ResponseHistoricoCassino> ObterHistoricoCassino(Guid user, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
         {
+
             if (dataLimiteInferior.HasValue && dataLimiteSuperior.HasValue)
             {
                 if (dataLimiteInferior > DateTime.Now || dataLimiteSuperior > DateTime.Now)
@@ -303,7 +305,9 @@ namespace GameMasterEnterprise.Service.Services
                 }
             }
 
-            var historicos = await _historicoSessaoRepository.ObterPorFiltroCassino(cassino, dataLimiteInferior, dataLimiteSuperior);
+
+            var cassinoModel = await _cassinoRepository.ObterPorUsuario(user);
+            var historicos = await _historicoSessaoRepository.ObterPorFiltroCassino(cassinoModel.Nome, dataLimiteInferior, dataLimiteSuperior);
             var historicoCassino = new List<HistoricoCassino>();
 
             foreach (var historico in historicos)
