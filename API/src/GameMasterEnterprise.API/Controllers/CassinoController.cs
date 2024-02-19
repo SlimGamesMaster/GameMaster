@@ -14,7 +14,7 @@ using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace Ipet.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiVersion("1.0")]
     [Route("Cassino")]
     public class CassinoController : HomeController
@@ -44,7 +44,7 @@ namespace Ipet.API.Controllers
             _appSettings = appSettings.Value;
             _mapper = mapper;
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("cassino/cadastra-cassino")]
         public async Task<ActionResult> CriarCassino(CassinoViewModel cassino)
         {
@@ -55,7 +55,7 @@ namespace Ipet.API.Controllers
             return Ok();
 
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("cassino/obter-cassino")]
         public async Task<ActionResult<Cassino>> ObterCassino(Guid cassinoId)
         {
@@ -68,7 +68,7 @@ namespace Ipet.API.Controllers
 
             return Ok(cassino);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("cassino/atualizar-cassino/{cassinoId}")]
         public async Task<ActionResult> AtualizarCassino(Guid cassinoId, CassinoViewModel cassinoNovo)
         {
@@ -77,7 +77,7 @@ namespace Ipet.API.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpDelete("cassino/remover-cassino/{cassinoId}")]
         public async Task<ActionResult> RemoverCassino(Guid cassinoId)
         {
@@ -85,7 +85,7 @@ namespace Ipet.API.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("cassino/obter-todos-cassinos")]
         public async Task<ActionResult<IEnumerable<CassinoViewModel>>> ObterTodosCassinos()
         {
@@ -93,7 +93,7 @@ namespace Ipet.API.Controllers
             return Ok(cassinos);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("master/obter-historico-cassino")]
         public async Task<ActionResult> ObterHistoricoCassino(string nomeCassino, DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
         {

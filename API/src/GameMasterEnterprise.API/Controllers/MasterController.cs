@@ -16,7 +16,7 @@ using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace Ipet.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiVersion("1.0")]
     [Route("Master")]
     public class MasterController : HomeController
@@ -60,7 +60,7 @@ namespace Ipet.API.Controllers
             _appSettings = appSettings.Value;
             _mapper = mapper;
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("master/abrir-jogo")]
         public async Task<IActionResult> RecebeDados(MasterViewModel master)
         {
@@ -127,7 +127,7 @@ namespace Ipet.API.Controllers
 
 
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("master/transacao")]
         public async Task<float> RealizaTransacao(TransacaoViewModel transacaoViewModel)
         {
@@ -142,7 +142,7 @@ namespace Ipet.API.Controllers
 
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("master/obter-sessao")]
         public async Task<ActionResult> ObterSessao(Guid sessaoId)
         {
@@ -156,7 +156,7 @@ namespace Ipet.API.Controllers
             return Ok(cassino);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("master/finalizar-sessao")]
         public async Task<ActionResult> FinalizarSessao(Guid sessaoId)
         {
@@ -167,7 +167,7 @@ namespace Ipet.API.Controllers
             return Ok("Sessao Finalizada com sucesso");
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("master/obter-ultimas-rodadas")]
         public async Task<ActionResult> ObterUltimasRodadasJogo(string nomeJogo)
         {

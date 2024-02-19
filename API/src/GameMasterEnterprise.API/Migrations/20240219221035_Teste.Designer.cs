@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameMasterEnterprise.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240105035347_Identity")]
-    partial class Identity
+    [Migration("20240219221035_Teste")]
+    partial class Teste
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

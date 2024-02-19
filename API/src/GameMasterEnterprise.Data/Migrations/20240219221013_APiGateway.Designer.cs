@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GameMasterEnterprise.Data.Migrations
 {
     [DbContext(typeof(MeuDbContext))]
-    [Migration("20240110203613_ADAD")]
-    partial class ADAD
+    [Migration("20240219221013_APiGateway")]
+    partial class APiGateway
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
+
+                    b.Property<float>("Banco")
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime(6)");
@@ -41,6 +44,9 @@ namespace GameMasterEnterprise.Data.Migrations
                     b.Property<string>("Url")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
+
+                    b.Property<Guid>("User")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 

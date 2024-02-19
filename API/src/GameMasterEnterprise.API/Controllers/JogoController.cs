@@ -13,7 +13,7 @@ using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace Ipet.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiVersion("1.0")]
     [Route("Jogo")]
     public class JogoController : HomeController
@@ -52,7 +52,7 @@ namespace Ipet.API.Controllers
             _appSettings = appSettings.Value;
             _mapper = mapper;
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPost("jogo/cadastrar-jogo")]
         public async Task<ActionResult> CriarJogo(JogoViewModel jogo)
         {
@@ -63,7 +63,7 @@ namespace Ipet.API.Controllers
             return Ok();
 
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("jogo/obter-Jogoo")]
         public async Task<ActionResult<Jogo>> ObterJogo(Guid JogoId)
         {
@@ -76,7 +76,7 @@ namespace Ipet.API.Controllers
 
             return Ok(Jogo);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("jogo/atualizar-jogo/{jogoId}")]
         public async Task<ActionResult> AtualizarJogo(Guid jogoId, JogoViewModel jogoNovo)
         {
@@ -85,7 +85,7 @@ namespace Ipet.API.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpDelete("jogo/remover-jogo/{jogoId}")]
         public async Task<ActionResult> Removerjogo(Guid jogoId)
         {
@@ -93,7 +93,7 @@ namespace Ipet.API.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("jogo/obter-todos-jogos")]
         public async Task<ActionResult<IEnumerable<JogoViewModel>>> ObterTodosJogos()
         {

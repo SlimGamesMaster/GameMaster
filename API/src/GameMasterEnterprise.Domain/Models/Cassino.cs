@@ -8,6 +8,7 @@ namespace GameMasterEnterprise.Domain.Models
 {
     public class Cassino : Entity
     {
+        public Guid User {  get; set; }
         public string Nome {  get; set; }
 
         public string Token { get; set; }

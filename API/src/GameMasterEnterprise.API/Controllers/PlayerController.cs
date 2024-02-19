@@ -13,7 +13,7 @@ using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 
 namespace Ipet.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [ApiVersion("1.0")]
     [Route("Player")]
     public class PlayerController : HomeController
@@ -44,7 +44,7 @@ namespace Ipet.API.Controllers
             _mapper = mapper;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("player/obter-player")]
         public async Task<ActionResult<PlayerViewModel>> ObterPlayer(Guid playerId)
         {
@@ -57,7 +57,7 @@ namespace Ipet.API.Controllers
 
             return Ok(player);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("player/obter-saldo-player")]
         public async Task<ActionResult<PlayerSaldoViewModel>> ObterSaldoPlayer(Guid playerId)
         {
@@ -70,7 +70,7 @@ namespace Ipet.API.Controllers
 
             return Ok(player);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpPut("player/atualizar-player/{playerId}")]
         public async Task<ActionResult> Atualizarplayer(Guid playerId, PlayerViewModel playerNovo)
         {
@@ -79,7 +79,7 @@ namespace Ipet.API.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpDelete("player/remover-player/{playerId}")]
         public async Task<ActionResult> Removerplayer(Guid playerId)
         {
@@ -87,7 +87,7 @@ namespace Ipet.API.Controllers
 
             return Ok();
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("player/obter-todos-players")]
         public async Task<ActionResult<IEnumerable<PlayerViewModel>>> ObterTodosplayers()
         {
