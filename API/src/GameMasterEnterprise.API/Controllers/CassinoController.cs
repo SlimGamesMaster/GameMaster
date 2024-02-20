@@ -103,7 +103,7 @@ namespace Ipet.API.Controllers
         //FILTRADO POR USUARIO
 
         //[AllowAnonymous]
-        [HttpGet("master/obter-historico-cassino-by-usuario")]
+        [HttpGet("cassino/obter-historico-cassino-by-usuario")]
         public async Task<ActionResult> ObterHistoricoCassino(DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
         {
             var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
