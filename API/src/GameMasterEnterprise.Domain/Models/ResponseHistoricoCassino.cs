@@ -13,6 +13,7 @@ namespace GameMasterEnterprise.Domain.Models
     public class HistoricoCassino
     {
         public HistoricoSessao HistoricoSessao { get; set; }
+        public string Cassino {  get; set; }
         public Player Player { get; set; }
     }
 }

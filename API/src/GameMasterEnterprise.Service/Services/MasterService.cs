@@ -127,6 +127,8 @@ namespace GameMasterEnterprise.Service.Services
                 throw;
             }
         }
+
+        //Prototipagem
         public async Task<float> ConsultaSaldoJogador(Guid sessaoId)
         {
 
@@ -137,11 +139,7 @@ namespace GameMasterEnterprise.Service.Services
             {
                 throw new InvalidOperationException("Player não encontrado.");
             }
-
-
             var idSaldo = await _playerSaldoService.ObterIdPlayerSaldo(idPlayer);
-
-
             var idCassino = await _playerService.ObterCassinoIdPorPlayerId(idPlayer);
             var urlCassino = await _cassinoRepository.ObterUrlCassino(idCassino);
             var tokenCassino = await _cassinoRepository.ObterTokenCassino(idCassino);
@@ -150,38 +148,43 @@ namespace GameMasterEnterprise.Service.Services
                 throw new InvalidOperationException("dados não encontrados.");
             }
 
+            //Produção
+
+            ////string url = "https://bigluck.bet/apiteste";
+            //var httpService = new HttpClient();
+            //var requestBody = new
+            //{
+            //    method = "user_balance",
+            //    agent_token = tokenCassino,
+            //    user_code = token
+            //};
+            //try
+            //{
+            //    var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
+
+            //    var userBalanceElement = respostaObjeto.GetProperty("user_balance");
+
+            //    var saldoNaoZero = userBalanceElement.GetSingle() != 0;
+            //    float saldo = userBalanceElement.GetSingle();
 
 
-            //string url = "https://bigluck.bet/apiteste";
+            //    await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
 
-            var httpService = new HttpClient();
+            //    return saldo;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+            //    throw;
+            //}
 
-            var requestBody = new
-            {
-                method = "user_balance",
-                agent_token = tokenCassino,
-                user_code = token
-            };
+            //Desenvolvimento
+            var saldo = 300;
+            await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
 
-            try
-            {
-                var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
+            return saldo;
 
-                var userBalanceElement = respostaObjeto.GetProperty("user_balance");
 
-                var saldoNaoZero = userBalanceElement.GetSingle() != 0;
-                float saldo = userBalanceElement.GetSingle();
-
-                
-                await _playerSaldoService.AtualizarPlayerSaldo(idSaldo, saldo);
-
-                return saldo;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
-                throw;
-            }
 
         }
         public async Task<float> ConsultaSaldoCassino(Guid sessaoId)
@@ -197,6 +200,8 @@ namespace GameMasterEnterprise.Service.Services
             return SaldoAtual;
 
         }
+
+        //Prototipagem
         public async Task<float> RealizaTransicao(Guid IdSessao, string operacao, float total)
         {
             await _sessaoService.ObterSessaoAtiva(IdSessao);
@@ -213,50 +218,69 @@ namespace GameMasterEnterprise.Service.Services
             var tokenCassino = await _cassinoRepository.ObterTokenCassino(cassinoId);
             var codigoJogo = await _jogoRepository.ObterCodigoJogo(jogoId);
 
-            var httpService = new HttpClient();
 
-            var requestBody = new
+
+            //Produção
+
+            //var httpService = new HttpClient();
+
+            //var requestBody = new
+            //{
+            //    method = "transaction",
+            //    agent_token = tokenCassino,
+            //    user_code = tokenPlayer,
+            //    type = operacao,
+            //    amount = total,
+            //    game_code = codigoJogo
+
+            //};
+            //try
+            //{
+            //    var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
+
+            //    var userBalanceElement = respostaObjeto.GetProperty("user_balance");
+
+            //    var saldoNaoZero = userBalanceElement.GetSingle() != 0;
+            //    float saldo = userBalanceElement.GetSingle();
+
+
+            //    var transacao = new HistoricoSessao
+            //    {
+            //        SessaoId = IdSessao,
+            //        Operacao = operacao,
+            //        Valor = total,
+            //    };
+
+            //    float saldoAtual = 00;
+            //    if(operacao == "credit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, true); }
+            //    if (operacao == "debit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, false); }
+
+            //    await _historicoSessaoService.CriarHistoricoSessao(transacao);
+
+
+            //    return saldoAtual;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Ocorreu um erro: {ex.Message}");
+            //    throw;
+            //}
+
+
+            //Prototipagem
+            var transacao = new HistoricoSessao
             {
-                method = "transaction",
-                agent_token = tokenCassino,
-                user_code = tokenPlayer,
-                type = operacao,
-                amount = total,
-                game_code = codigoJogo
-
-            };
-            try
-            {
-                var respostaObjeto = await PostAsync<JsonElement>(urlCassino, requestBody);
-
-                var userBalanceElement = respostaObjeto.GetProperty("user_balance");
-
-                var saldoNaoZero = userBalanceElement.GetSingle() != 0;
-                float saldo = userBalanceElement.GetSingle();
-
-
-                var transacao = new HistoricoSessao
-                {
                     SessaoId = IdSessao,
                     Operacao = operacao,
                     Valor = total,
-                };
+            };
 
-                float saldoAtual = 00;
-                if(operacao == "credit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, true); }
-                if (operacao == "debit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, false); }
-                
-                await _historicoSessaoService.CriarHistoricoSessao(transacao);
+            float saldoAtual = 00;
+            if (operacao == "credit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, true); }
+            if (operacao == "debit") { saldoAtual = await _cassinoService.AtualizarSaldoCassino(cassinoId, total, false); }
 
-
-                return saldoAtual;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ocorreu um erro: {ex.Message}");
-                throw;
-            }
-
+            await _historicoSessaoService.CriarHistoricoSessao(transacao);
+            return saldoAtual;
         }
 
 
@@ -275,9 +299,15 @@ namespace GameMasterEnterprise.Service.Services
             foreach (var historico in historicos)
             {
                 var playerId = await _sessaoRepository.ObterPlayerIdPorSessaoId(historico.SessaoId);
+
+                var valorRecebido = historico.Valor;
+                var op = historico.Operacao;
+
+                if (op == "credit") { creditCount = creditCount + 1; totalCredit = totalCredit + valorRecebido; }
+                if (op == "debit") { debitCount = debitCount + 1; totalDebit = totalDebit + valorRecebido; }
                 //var nome = await _playerRepository.ObterNomeJogador(playerId);
                 //var token = await _playerRepository.ObterTokenJogador(playerId);
-                
+
             }
 
             var jogador = new ResponseHistoricoJogador
@@ -318,6 +348,7 @@ namespace GameMasterEnterprise.Service.Services
 
                 var _historicoCassino = new HistoricoCassino
                 {
+                    Cassino = cassinoModel.Nome,
                     Player = player,
                     HistoricoSessao = historico,
                 };

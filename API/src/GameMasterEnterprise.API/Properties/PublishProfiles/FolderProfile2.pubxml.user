@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>D:\AMBIENTE DEV\C#\Api - Game Master\Publish</_PublishTargetUrl>
-    <History>True|2024-02-15T20:24:59.5611293Z;True|2024-02-13T14:50:07.9208267-03:00;True|2024-02-08T18:19:34.5850543-03:00;True|2024-02-07T17:25:58.5357321-03:00;True|2024-02-05T20:04:06.0218544-03:00;True|2024-02-05T18:39:25.0953533-03:00;</History>
+    <History>True|2024-02-19T22:22:06.7217265Z;True|2024-02-15T17:24:59.5611293-03:00;True|2024-02-13T14:50:07.9208267-03:00;True|2024-02-08T18:19:34.5850543-03:00;True|2024-02-07T17:25:58.5357321-03:00;True|2024-02-05T20:04:06.0218544-03:00;True|2024-02-05T18:39:25.0953533-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>

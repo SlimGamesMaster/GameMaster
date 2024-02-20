@@ -44,5 +44,14 @@ namespace GameMasterEnterprise.Data.Repository
             return await Db.Cassino.AsNoTracking()
                 .FirstOrDefaultAsync(c => c.Token == token);
         }
+
+
+        public async Task<List<Cassino>> ObterTodosPorUsuario(Guid user)
+        {
+            var cassino = await Db.Cassino.AsNoTracking()
+                           .Where(c => c.User == user)
+                           .ToListAsync();
+            return cassino;
+        }
     }
 }

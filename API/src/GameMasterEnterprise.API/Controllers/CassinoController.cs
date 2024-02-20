@@ -3,6 +3,7 @@ using GameMasterEnterprise.API.Controllers;
 using GameMasterEnterprise.API.Extensions;
 using GameMasterEnterprise.API.Models.Request;
 using GameMasterEnterprise.API.ViewModels;
+using GameMasterEnterprise.Data.Repository;
 using GameMasterEnterprise.Domain.Intefaces;
 using GameMasterEnterprise.Domain.Models;
 using GameMasterEnterprise.Service.Services;
@@ -22,6 +23,7 @@ namespace Ipet.API.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ICassinoService _cassinoService;
+        private readonly ICassinoRepository _cassinoRepository;
         private readonly IMasterService _masterService;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
@@ -32,12 +34,14 @@ namespace Ipet.API.Controllers
             IMapper mapper, INotificador notificador,
             ICassinoService cassinoService,
             IMasterService masterService,
+            ICassinoRepository cassinoRepository,
                               SignInManager<IdentityUser> signInManager,
                               UserManager<IdentityUser> userManager,
                               IOptions<AppSettings> appSettings,
                               IUser user, ILogger<AutenticacaoController> logger) : base(notificador, user)
         {
             _cassinoService = cassinoService;
+            _cassinoRepository = cassinoRepository;
             _signInManager = signInManager;
             _masterService = masterService;
             _userManager = userManager;
@@ -59,8 +63,8 @@ namespace Ipet.API.Controllers
 
         }
         //[AllowAnonymous]
-        [HttpGet("cassino/obter-cassino")]
-        public async Task<ActionResult<Cassino>> ObterCassino(Guid cassinoId)
+        [HttpGet("cassino/obter-cassino-id")]
+        public async Task<ActionResult<Cassino>> ObterCassinoId(Guid cassinoId)
         {
             var cassino = await _cassinoService.ObterCassino(cassinoId);
 
@@ -72,7 +76,7 @@ namespace Ipet.API.Controllers
             return Ok(cassino);
         }
         //[AllowAnonymous]
-        [HttpPut("cassino/atualizar-cassino/{cassinoId}")]
+        [HttpPut("cassino/atualizar-cassino-id/{cassinoId}")]
         public async Task<ActionResult> AtualizarCassino(Guid cassinoId, CassinoViewModel cassinoNovo)
         {
             await _cassinoService.AtualizarCassino(cassinoId, _mapper.Map<Cassino>(cassinoNovo));
@@ -81,7 +85,7 @@ namespace Ipet.API.Controllers
             return Ok();
         }
         //[AllowAnonymous]
-        [HttpDelete("cassino/remover-cassino/{cassinoId}")]
+        [HttpDelete("cassino/remover-cassino-id/{cassinoId}")]
         public async Task<ActionResult> RemoverCassino(Guid cassinoId)
         {
             await _cassinoService.RemoverCassino(cassinoId);
@@ -96,8 +100,10 @@ namespace Ipet.API.Controllers
             return Ok(cassinos);
         }
 
+        //FILTRADO POR USUARIO
+
         //[AllowAnonymous]
-        [HttpGet("master/obter-historico-cassino")]
+        [HttpGet("master/obter-historico-cassino-by-usuario")]
         public async Task<ActionResult> ObterHistoricoCassino(DateTime? dataLimiteInferior = null, DateTime? dataLimiteSuperior = null)
         {
             var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -112,6 +118,17 @@ namespace Ipet.API.Controllers
 
             return Ok(historicoCassino);
         }
+        //[AllowAnonymous]
+        [HttpGet("cassino/obter-todos-cassinos-by-usuario")]
+        public async Task<ActionResult<IEnumerable<CassinoViewModel>>> ObterCassinos()
+        {
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Guid userId = Guid.Parse(user);
+
+            var cassinos = await _cassinoRepository.ObterTodosPorUsuario(userId);
+            return Ok(cassinos);
+        }
+
 
 
     }
